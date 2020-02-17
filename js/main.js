@@ -111,7 +111,10 @@ function resetAll(){
 }
 
 
+function enterFullScreenMode(){
+  // enter full screen mode
 
+}
 
 
 
