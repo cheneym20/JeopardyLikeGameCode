@@ -4,8 +4,8 @@
 function xmlLoadFile(){}
 
 
-function validateQAobject(QAobject){
-  // ensure that the QAobject has everything required to begin a game.
+function validateGameObject(gameObject){
+  // ensure that the gameObject has everything required to begin a game.
   // the return value should reflect either that a game is possible
   // or returns what is needed.
 
@@ -42,6 +42,8 @@ function gameModeChange(newGameMode){
 function showAdminWindow(){
   // is there a way to determine whether or not a dual screen is available?
   // if so, warn user if not available.  else open the admin window
+  
+  // the admin window is defined with another html page
 
 }
 
@@ -83,6 +85,30 @@ function editColumn(col, action){
 
 }
 
+
+function setNumberOfRows(numOfRows){
+  // set the number of rows in the game
+
+}
+
+
+function validateQAobject(ob){
+  // validate that an individual QAobject is playable.
+  // return with a string of status
+
+}
+
+
+function resetGameGridObject(){
+  // empty the game grid
+
+}
+
+
+function resetAll(){
+// reset all
+
+}
 
 
 
