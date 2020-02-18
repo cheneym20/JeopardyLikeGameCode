@@ -128,7 +128,7 @@ nav a:hover {
     padding: 30px 0;
 }
 
-.main article h1 {
+.main .grid_container h1 {
     font-size: 2em;
 }
 
@@ -154,17 +154,58 @@ nav a:hover {
    Author's custom styles
    ========================================================================== */
 
+/* ==========================================================================
+   Grid Container
+   ========================================================================== */
 
+.grid_container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #f16529;
+    column-gap: 20px;
+    row-gap: 20px;
+    padding: 10px;
+}
+.grid_item{
+    background-color: #f7f7f7;
+    padding: 30px;
+    font-size: 60px;
+    text-align: center;
+    box-shadow: 5px 5px 10px #906522;
+    cursor: pointer;
 
+    max-width: 160px; 
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
 
+    overflow: hidden;
+    position: relative;
+    
+  }
 
+.grid_item:after {
+    background: #ff8720;
+    content: "";
+    height: 180px;
+    left: -90px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: -10;
+  }
 
+.grid_item:hover:after {
+    left: 120%;
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
 
-
-
-
-
-
+div.grid_item {
+    z-index: 20;
+  }
 
 
 
@@ -237,7 +278,7 @@ nav a:hover {
     WIDE: Main
    ============ */
 
-    .main article {
+    .main .grid_container {
         float: left;
         width: 57%;
     }
