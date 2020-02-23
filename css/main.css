@@ -51,6 +51,16 @@ textarea {
     padding: 0.2em 0;
 }
 
+input[type="number"]{
+    -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
 
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
@@ -125,7 +135,10 @@ nav div:hover {
    ============== */
 
 .main {
-    padding: 30px 0;
+    padding: 10px 0px;
+    display:flex;
+    justify-content: center;
+    width:100%;
 }
 
 .main .grid_container h1 {
@@ -160,20 +173,25 @@ nav div:hover {
 
 .grid_container{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto; /* Add or subject the amount of "auto" here to change the amount of columns */
     background-color: #f16529;
     column-gap: 20px;
     row-gap: 20px;
     padding: 10px;
     box-shadow: 5px 5px 10px #9c9c9c;
+    width:98%;
 }
-.grid_item{
+
+.grid_titles{
+    background-color:#a71111;
+}
+
+.grid_item, .grid_item_title{
     padding: 30px;
     font-size: 60px;
     text-align: center;
     box-shadow: 5px 5px 10px #906522;
     cursor: pointer;
-    max-width: 160px; 
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
@@ -183,6 +201,10 @@ nav div:hover {
     color: white;
   }
 
+  .grid_item_title{
+      cursor: default;
+  }
+
 .grid_item:hover{
     box-shadow: inset 0 0 20px #776565;
     background-color: #ece8e8;
@@ -190,8 +212,29 @@ nav div:hover {
 }
 
 
+.number_input{
+    height: 27px;
+    width: 50%;
+    color: black;
+}
 
+.plus, .minus{
+    width:11%;
+    margin-right:-5px;
+    margin-bottom:-11.5px;
+    height:33px;
+}
 
+.minus{
+    margin-left:-5px;
+}
+
+.blFont{
+    color:black;
+    font-size: 36px;
+    margin-left:-12px;
+    vertical-align:middle;
+}
 
 /* ==========================================================================
    Media Queries
@@ -232,7 +275,16 @@ nav div:hover {
     }
 }
 
+@media only screen and (max-width: 768px) {
+
+    .grid_item{
+        padding:20px;
+    }
+    
+}
+
 @media only screen and (min-width: 768px) {
+
 
 /* ====================
     WIDE: CSS3 Effects
@@ -255,17 +307,12 @@ nav div:hover {
 
     nav {
         float: right;
-        width: 38%;
+        width: 70%;
     }
 
 /* ============
     WIDE: Main
    ============ */
-
-    .main .grid_container {
-        float: left;
-        width: 57%;
-    }
 
     .main aside {
         float: right;
