@@ -20,10 +20,10 @@
                 <nav>
                     <ul>
                         <li>
-                            <div class="teamScore"><span>Team 1: </span><span class="Team1Score">100</span></div>
+                            <div class="teamScore"><span>Team 1: </span><span class="Team1Score scoreTotal">100</span></div>
                         </li>
                         <li>
-                            <div class="teamScore"><span>Team 2: </span><span class="Team2Score">100</span></div>
+                            <div class="teamScore"><span>Team 2: </span><span class="Team2Score scoreTotal">100</span></div>
                         </li>
                     </ul>
                 </nav>
@@ -40,7 +40,12 @@
 
             <div class="main clearfix">
                 <div class="grid_container">
-                    <div class="grid_item" id="column1row1" onclick="displayOverlayObject()">100</div>
+                    <div class="grid_item" id="column1row1" onclick="displayOverlayObject()">
+                        <div class="pointNumberAmount">100</div>
+                        <div class="questionTextBox" onclick="hideOverlayObject()">
+                            <div class="questionText">Test Question: What day of the week does Thanksgiving land on?</div>
+                        </div>
+                    </div>
                 </div>
 
             </div> <!-- #main -->

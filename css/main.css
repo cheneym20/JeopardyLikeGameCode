@@ -241,6 +241,12 @@ nav div:hover {
 }
 .teamScore{
     font-size: 36px;
+    font-style: italic;
+}
+.scoreTotal{
+    font-style:normal;
+    font-size: 36px;
+    text-decoration: underline;
 }
 .overlayBox{
     position: absolute;
@@ -281,6 +287,31 @@ nav div:hover {
     vertical-align: middle;
     line-height: 133px;
     text-align: center;
+}
+.questionTextBox{
+    display:none;
+    visibility: visible;
+}
+
+.questionText{
+    display: block;
+    z-index: 5;
+    position: fixed;
+    background-color: #f5decc;
+    height: 87%;
+    width: 98%;
+    top: 11%;
+    left: 1%;
+    visibility: visible;
+    opacity: 1;
+    box-shadow: 0px 0px 10px black;
+    line-height: 1;
+    color: #232323;
+}
+
+.questionText{
+    display:none;
+    z-index: 0;
 }
 
 

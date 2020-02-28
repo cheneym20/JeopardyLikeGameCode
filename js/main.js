@@ -215,8 +215,21 @@ function loadOverlayObject(question,answer,source,value){
   // load the following information
 }
 
-function displayOverlayObject(){}
+function displayOverlayObject(){
+  // This is only to test.  
+  var QuestionBox = document.getElementById("column1row1");
+  QuestionBox.firstElementChild.innerHTML = "test";
+  QuestionBox.lastElementChild.innerHTML = "test2";
+  revealBox(QuestionBox);
+  ////////////////////////
+}
 
+function revealBox(QuestionBox){
+  // This is only to test.  
+  QuestionBox.lastElementChild.style.backgroundColor = "Blue";
+  QuestionBox.lastElementChild.style.display
+  ////////////////////////
+}
 
 function hideOverlayObject(){}
 
