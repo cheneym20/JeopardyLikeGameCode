@@ -20,10 +20,10 @@
                 <nav>
                     <ul>
                         <li>
-                            <div class="teamScore"><span>Team 1: </span><span class="Team1Score">100</span></div>
+                            <div class="teamScore"><span>Team 1: </span><span class="Team1Score scoreTotal">100</span></div>
                         </li>
                         <li>
-                            <div class="teamScore"><span>Team 2: </span><span class="Team2Score">100</span></div>
+                            <div class="teamScore"><span>Team 2: </span><span class="Team2Score scoreTotal">100</span></div>
                         </li>
                     </ul>
                 </nav>
@@ -40,17 +40,21 @@
 
             <div class="main clearfix">
                 <div class="grid_container">
-                    <div class="grid_item">100</div>
+                    <div class="grid_item" id="column1row1" onclick="displayOverlayObject()">
+                        <div class="pointNumberAmount">100</div>
+                        <div class="questionTextBox" onclick="hideOverlayObject()">
+                            <div class="questionText">Test Question: What day of the week does Thanksgiving land on?</div>
+                        </div>
+                    </div>
                 </div>
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 
-        <!-- <div class="footer-container">
-            <footer class="wrapper">
-                <h3>footer</h3>
-            </footer>
-        </div> -->
+        <div class="underlaySheet"></div>
+        <div class="overlayBox" onclick="hideOverlayObject()">
+            <div class="overlayBoxInfo">Test Question: What day of the week does Thanksgiving land on?</div>
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
