@@ -48,14 +48,84 @@
         <div class="main-container">
 
             <div class="main clearfix ">
-                <div class="grid_container grid_titles">
+                <span>
+                    <button id='open-file-button'>Open File</button>
+                </span>
+                <span>
+                    <button id='save-file-button'>Save Changes</button>
+                </span>
+                <span>
+                    <button id='new-file-button'>New File</button>
+                </span>
+
+                <!--<div class="grid_container grid_titles">
                     <div class="grid_item_title">Title 1</div>
                 </div>
+                -->
+                <span>
+                    <h3>File Title</h3>
+                    <input id='file-title' type='text', value='Title'/>
+                </span>
+                <span>
+                    <h3>Games in file</h3>
+                    <select id='game-select-menu' name="cars" size="4" >
+                            <option value="game1">Game 1</option>
+                            <option value="game2">Game 2</option>
+                            <option value="game3">Game 3</option>
+                            <option value="game4">Game 4</option>
+                    </select>
+                </span>
+                <span>
+                        <h3>Rounds in game</h3>
+                        <select id='round-select-menu' name="cars" size="4" >
+                                <option value="round1">Round 1</option>
+                                <option value="round2">Round 2</option>
+                                <option value="round3">Round 3</option>
+                                <option value="round4">Round 4</option>
+                        </select>
+                    </span>
             </div>
 
             <div class="main clearfix">
                 <div class="grid_container">
-                    <div class="grid_item">100</div>
+                    <span class="grid_column">
+                        <div columnID='1' class='grid-title'>Category 1</div>
+                        <div columnID='1' rowID='1' class='grid-cell'>1</div>
+                        <div columnID='1' rowID='2'  class='grid-cell'>2</div>
+                    </span>
+                    <span class="grid_column">
+                            <div columnID='2' class='grid-title'>Category 2</div>
+                            <div columnID='2' rowID='1'  class='grid-cell'>1</div>
+                            <div columnID='2' rowID='2'  class='grid-cell'>2</div>
+                    </span>
+                    <span class="grid_column">
+                            <div columnID='3' class='grid-title'>Category 3</div>
+                            <div columnID='3' rowID='1'  class='grid-cell'>1</div>
+                            <div columnID='3' rowID='2'  class='grid-cell'>2</div>
+                    </span>
+                </div>
+                <div id='cell-contents'>
+                    <div class='textarea-container'>
+                            <h3>Question:</h3>
+                            <textarea id='question-field' name="message" rows="10" cols="30">Sample question.</textarea>
+                    </div>
+                    <div class='textarea-container'>
+                            <h3>Answer:</h3>
+                            <textarea id='answer-field' name="message" rows="10" cols="30">Sample answer.</textarea>
+                    </div>
+                    <div class='textarea-container'>
+                            <h3>Source:</h3>
+                            <textarea id='source-field' name="message" rows="10" cols="30">Sample source.</textarea>
+                    </div>
+                    <div class='field-container'>
+                            <input type='text' id='cell-value-field' value='100'/>
+                    </div>
+                    <div class='button-container'>
+                            <button id='cell-reset-button'>Reset Cell</button>
+                    </div>
+                    <div class='button-container'>
+                            <button id='cell-disable-button'>Disable Cell</button>
+                    </div>
                 </div>
 
             </div> <!-- #main -->

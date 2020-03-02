@@ -6,6 +6,8 @@ var overlayState = "";
 
 var xmlGameOb;
 
+var adminWindow;
+
 
 
 
@@ -241,14 +243,152 @@ function gameModeChange(newGameMode){
 function showAdminWindow(){
   // is there a way to determine whether or not a dual screen is available?
   // if so, warn user if not available.  else open the admin window
+
+  // the admin window will contain the following:
+
+      // The button to open a game file
+
+      // The button to save changes to a game file, grayed-out if not needed
+
+      // the button to create a new game file
+
+      // The name of the game file that is currently open.  grayed-out if no file used
+
+      // A dropdown menu of different games in the game file
+
+      // a dropdown menu of different rounds in a game
+
+      // a duplicate of the game grid, for control over the game grid.
+
+          // the game grid contains:
+
+              // Category titles
+
+              // a cell for each row
+
+      // a section is designated for displaying cell information:
+
+          // Question
+
+          // Answer
+
+          // Source
+
+          // RESET button
+
+          // DISABLE button
+
+
   
   // the admin window is defined with another html page
+    adminWindow = window.open('admin.html', "ADMIN WINDOW", "width=800px, height=600px, resizable");
+
+    adminWindow.onload = function(){
+      // once the window is loaded, eventlisteners are added to interact with the original game window:
+
+        var openFileButton = this.document.getElementById('open-file-button'); // <-- change to DOM element open button ID
+        var saveFileButton = this.document.getElementById('save-file-button'); // <-- change to DOM element save button ID
+        var newGameButton = this.document.getElementById('new-file-button'); // <-- change to DOM element new game button ID
+
+        var fileTitleField = this.document.getElementById('file-title'); // <-- change to DOM element file title field ID
+        var gamesInFileDropDown = this.document.getElementById('game-select-menu'); // <-- change to DOM element games in file dropdown ID
+        var roundsInGameDropDown = this.document.getElementById('round-select-menu'); // <-- change to DOM element rounds in game dropdown ID
+
+        var adminGameCells = this.document.getElementsByClassName('grid-cell'); // <-- change class name appropriately
+        var adminQuestionField = this.document.getElementById('question-field'); // <-- change to DOM object question field ID
+        var adminAnswerField = this.document.getElementById('answer-field'); // <-- change to DOM object answer field ID
+        var adminSourceField = this.document.getElementById('source-field'); // <-- change to DOM object source field ID
+        var adminValueField = this.document.getElementById('< value field id >'); // <-- change to DOM object value field ID
+        var adminCellResetButton = this.document.getElementById('cell-reset-button'); // <-- change to DOM object reset button ID
+        var adminCellDisableButton = this.document.getElementById('cell-disable-button'); // <-- change to DOM object disable button ID
+
+        // The admin window's elements are now defined.  Add event listeners to them:
+        openFileButton.addEventListener('click', function(){
+              // the open file button has been pressed.  
+
+              // do we already have a file open?  Are there changes made to an open file that will be overwritten?  Inquire.
+        });
+
+        saveFileButton.addEventListener('click', function(){
+              // save the changes to xml and export to a file.
+        });
+
+        newGameButton.addEventListener('click', function(){
+              // this will abandon any changes made if a file is open.  Inquire.
+        });
+
+        fileTitleField.addEventListener('change', function(){
+              // the file title has been changed.  do something.
+        });
+
+        adminGameCells.addEventListener('click', function(){
+            // a cell in the admin window's game representation was clicked.  
+            // display the cell's contents in the designated area on the admin window:
+
+            // each cell has a column and row attribute:
+            var gameID = gamesInFileDropDown.value; // <-- this needs to point to an actual game ID.  figure it out.
+            var roundID = roundsInGameDropDown.value; // <-- this needs to point to an actual round ID. figure it out.
+            var columnID = this.getAttribute(column); // <-- when loading the cells, the cell DOM will get this additional attribute
+            var rowID = this.getAttribute(row); // <-- when loading the cells, the cell DOM will get this additional attribute
+            
+
+            loadCellInformation(gameID, roundID, columnID, rowID);
+        });
+
+        adminQuestionField.addEventListener('change', function(){
+            // the field has been edited.  do something.
+        });
+
+        adminAnswerField.addEventListener('change', function(){
+            // the field has been edited.  do something.
+        });
+
+        adminSourceField.addEventListener('change', function(){
+            // the field has been edited.  do something.
+        });
+
+        adminValueField.addEventListener('change', function(){
+            // the field has been edited.  validate field (should only be numbers). Do something accordingly
+
+            // validate that the new field value is a number:
+
+            // if it is, do something accordingly:
+
+        });
+
+        adminSourceField.addEventListener('change', function(){
+          // the field has been edited.  do something.
+        });
+
+        adminCellResetButton.addEventListener('click', function(){
+          // user wants to reset the cell to unclicked condition. 
+        });
+
+        adminCellDisableButton.addEventListener('click', function(){
+          // user wants to disable the cell as if already clicked.
+        });
+
+    }
+
+
+    adminWindow.alert("Admin window loaded.");
+
+
 
 }
 
 
+function loadCellInformation(gameID, roundID, columnID, rowID){
+
+  // load the appropriate information into the admin window
+
+
+}
+
 function onAdminWindowClose(){
   // do these things when the admin window is closed
+
+  // can you ask if the user really wants to close this window, especially if something is happening... game, editing, changes made?
 
 }
 
