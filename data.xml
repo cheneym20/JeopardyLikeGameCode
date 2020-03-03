@@ -1,0 +1,345 @@
+﻿<root>
+	<title>Prototypal Games</title>
+	<fileCreator>ET1 Cheney</fileCreator>
+	<fileNotes>Notes notes notes.</fileNotes>
+	<game>
+		<gameId>0001</gameId>
+		<creator>ET1 Cheney</creator>
+		<dateCreated>3/1/2020</dateCreated>
+		<gameNotes>note 1 note 2 note 3</gameNotes>
+		<round>
+			<roundPosition>1</roundPosition>
+			<roundTitle>round 1</roundTitle>
+			<roundStatus>incomplete</roundStatus>
+			<hasFinalQA>true</hasFinalQA>
+			<finalQA>
+				<fQuestion>What is 2 + 2?</fQuestion>
+				<fAnswer>4</fAnswer>
+				<fSource>no source</fSource>
+			</finalQA>
+			<category>
+				<column>1</column>
+				<title>Math works</title>
+				<qa>
+					<row>1</row>
+					<question>What is 1 + 1?</question>
+					<answer>2</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>What is 2 + 2?</question>
+					<answer>4</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>What is 3 + 3?</question>
+					<answer>6</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>What is 4 + 4?</question>
+					<answer>8</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>What is 5 + 5?</question>
+					<answer>10</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+			<category>
+				<column>2</column>
+				<title>Science</title>
+				<qa>
+					<row>1</row>
+					<question>How many protons in hydrogen??</question>
+					<answer>1</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>True or False: water is hydrophobic?</question>
+					<answer>false</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>Another word for phlegm?</question>
+					<answer>spit</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>How many fingers on each hand?</question>
+					<answer>5</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>How many ears each human have?</question>
+					<answer>2</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+			<category>
+				<column>3</column>
+				<title>Electronics</title>
+				<qa>
+					<row>1</row>
+					<question>Define EMF?</question>
+					<answer>Electro Motive Force</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>In what unit of measure is power?</question>
+					<answer>watts</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>What is transistor saturation?</question>
+					<answer>When the transistor no longer provides amplification</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>What is the function of a diode?</question>
+					<answer>To provide a one-way path for current flow</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>How many diodes in a bridge rectifier?</question>
+					<answer>4</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+			<category>
+				<column>4</column>
+				<title>Random</title>
+				<qa>
+					<row>1</row>
+					<question>What is nap in the painting world?</question>
+					<answer>The thickness of roller fluff stuff</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>What is CMYK?</question>
+					<answer>Cyan, Magenta, Yellow, Black (Karbon)</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>What in paper makes it turn yellow?</question>
+					<answer>Lignon</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>Do honey badgers care about anything?</question>
+					<answer>Absolutely not</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>What type of blood type is universal?</question>
+					<answer>O</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+		</round>
+		<round>
+			<roundPosition>2</roundPosition>
+			<roundTitle>round 1</roundTitle>
+			<roundStatus>incomplete</roundStatus>
+			<hasFinalQA>true</hasFinalQA>
+			<finalQA>
+				<fQuestion>What is 24 + 24?</fQuestion>
+				<fAnswer>48</fAnswer>
+				<fSource>no source</fSource>
+			</finalQA>
+			<category>
+				<column>1</column>
+				<title>Math works</title>
+				<qa>
+					<row>1</row>
+					<question>What is 1 + 1?</question>
+					<answer>2</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>What is 2 + 2?</question>
+					<answer>4</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>What is 3 + 3?</question>
+					<answer>6</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>What is 4 + 4?</question>
+					<answer>8</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>What is 5 + 5?</question>
+					<answer>10</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+			<category>
+				<column>2</column>
+				<title>Science</title>
+				<qa>
+					<row>1</row>
+					<question>How many protons in hydrogen??</question>
+					<answer>1</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>True or False: water is hydrophobic?</question>
+					<answer>false</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>Another word for phlegm?</question>
+					<answer>spit</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>How many fingers on each hand?</question>
+					<answer>5</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>How many ears each human have?</question>
+					<answer>2</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+			<category>
+				<column>3</column>
+				<title>Electronics</title>
+				<qa>
+					<row>1</row>
+					<question>Define EMF?</question>
+					<answer>Electro Motive Force</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>In what unit of measure is power?</question>
+					<answer>watts</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>What is transistor saturation?</question>
+					<answer>When the transistor no longer provides amplification</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>What is the function of a diode?</question>
+					<answer>To provide a one-way path for current flow</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>How many diodes in a bridge rectifier?</question>
+					<answer>4</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+			<category>
+				<column>4</column>
+				<title>Random</title>
+				<qa>
+					<row>1</row>
+					<question>What is nap in the painting world?</question>
+					<answer>The thickness of roller fluff stuff</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>2</row>
+					<question>What is CMYK?</question>
+					<answer>Cyan, Magenta, Yellow, Black (Karbon)</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>3</row>
+					<question>What in paper makes it turn yellow?</question>
+					<answer>Lignon</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>4</row>
+					<question>Do honey badgers care about anything?</question>
+					<answer>Absolutely not</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+				<qa>
+					<row>5</row>
+					<question>What type of blood type is universal?</question>
+					<answer>O</answer>
+					<source>brain</source>
+					<qaStatus>complete</qaStatus>
+				</qa>
+			</category>
+		</round>
+	</game>
+</root>

@@ -1,4 +1,5 @@
 
+$(document).ready(function(){
 
 var gameState = "";
 
@@ -484,7 +485,7 @@ function enterFullScreenMode(){
 }
 
 
-
+});
 
 
 
