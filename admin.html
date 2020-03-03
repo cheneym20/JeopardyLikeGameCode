@@ -49,7 +49,11 @@
 
             <div class="main clearfix ">
                 <span>
-                    <button id='open-file-button'>Open File</button>
+                        <input type="file" id="file" name="file" />
+                        <output id="open-file-button"></output>
+                </span>
+                <span>
+                 <!--   <button id='open-file-button'>Open File</button>  -->
                 </span>
                 <span>
                     <button id='save-file-button'>Save Changes</button>
@@ -107,17 +111,18 @@
                 <div id='cell-contents'>
                     <div class='textarea-container'>
                             <h3>Question:</h3>
-                            <textarea id='question-field' name="message" rows="10" cols="30">Sample question.</textarea>
+                            <textarea id='question-field' name="message" rows="10" cols="30" placeholder='Sample Question'></textarea>
                     </div>
                     <div class='textarea-container'>
                             <h3>Answer:</h3>
-                            <textarea id='answer-field' name="message" rows="10" cols="30">Sample answer.</textarea>
+                            <textarea id='answer-field' name="message" rows="10" cols="30" placeholder="Sample Answer"></textarea>
                     </div>
                     <div class='textarea-container'>
                             <h3>Source:</h3>
-                            <textarea id='source-field' name="message" rows="10" cols="30">Sample source.</textarea>
+                            <textarea id='source-field' name="message" rows="10" cols="30" placeholder="Sample source"></textarea>
                     </div>
                     <div class='field-container'>
+                            <h3>Value:</h3>
                             <input type='text' id='cell-value-field' value='100'/>
                     </div>
                     <div class='button-container'>
@@ -141,7 +146,8 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
+        <script src="js/FileSaver.js"></script>
         <script src="js/main.js"></script>
+        
     </body>
 </html>

@@ -58,6 +58,21 @@ function xmlLoadFile(){
 }
 
 
+function xmlSaveFile(){
+
+        // create the xml string from the xml object:
+
+    var xmlSerializer = new XMLSerializer();
+
+    var XMLstr = xmlSerializer.serializeToString(xmlGameOb);
+
+    saveAs(blob, "newGame.txt");
+    
+
+
+}
+
+
 function validateGameObject(gameObject){
   // ensure that the gameObject has everything required to begin a game.
   // the return value should reflect either that a game is possible
@@ -318,20 +333,26 @@ function showAdminWindow(){
         // The admin window's elements are now defined.  Add event listeners to them:
         openFileButton.addEventListener('click', function(){
               // the open file button has been pressed.  
-
+              xmlLoadFile();
               // do we already have a file open?  Are there changes made to an open file that will be overwritten?  Inquire.
         });
 
         saveFileButton.addEventListener('click', function(){
               // save the changes to xml and export to a file.
+              xmlSaveFile();
+
         });
 
         newGameButton.addEventListener('click', function(){
               // this will abandon any changes made if a file is open.  Inquire.
+
+
         });
 
         fileTitleField.addEventListener('change', function(){
               // the file title has been changed.  do something.
+
+
         });
 
         adminGameCells.addEventListener('click', function(){
