@@ -9,11 +9,110 @@ var xmlGameOb;
 
 var adminWindow;
 
-$('#openAdminButton').on('click', function(){
-  
-    showAdminWindow();
-  
-});
+var gameWindow = window.opener;
+
+
+// load all event listeners:
+
+        document.getElementById('debug').innerHTML = "creating all event listeners...";
+
+        var openFileOption = document.getElementById('fileLoader'); // <-- change to DOM element open button ID
+        var saveFileButton = document.getElementById('save-file-button'); // <-- change to DOM element save button ID
+        var newGameButton = document.getElementById('new-file-button'); // <-- change to DOM element new game button ID
+
+        var fileTitleField = document.getElementById('file-title'); // <-- change to DOM element file title field ID
+        var gamesInFileDropDown = document.getElementById('game-select-menu'); // <-- change to DOM element games in file dropdown ID
+        var roundsInGameDropDown = document.getElementById('round-select-menu'); // <-- change to DOM element rounds in game dropdown ID
+
+        var adminGameCells = document.getElementsByClassName('grid-cell'); // <-- change class name appropriately
+        var adminQuestionField = document.getElementById('question-field'); // <-- change to DOM object question field ID
+        var adminAnswerField = document.getElementById('answer-field'); // <-- change to DOM object answer field ID
+        var adminSourceField = document.getElementById('source-field'); // <-- change to DOM object source field ID
+        var adminValueField = document.getElementById('< value field id >'); // <-- change to DOM object value field ID
+        var adminCellResetButton = document.getElementById('cell-reset-button'); // <-- change to DOM object reset button ID
+        var adminCellDisableButton = document.getElementById('cell-disable-button'); // <-- change to DOM object disable button ID
+
+        // The admin window's elements are now defined.  Add event listeners to them:
+
+        openFileOption.addEventListener('change', function(){
+              // the open file button has been pressed.  
+              alert("attempting to open file");
+
+              xmlLoadFile();
+              // do we already have a file open?  Are there changes made to an open file that will be overwritten?  Inquire.
+        });
+
+        saveFileButton.addEventListener('click', function(){
+              // save the changes to xml and export to a file.
+
+              console.log("attempting to save file")
+              xmlSaveFile();
+
+        });
+
+        newGameButton.addEventListener('click', function(){
+              // this will abandon any changes made if a file is open.  Inquire.
+
+
+        });
+
+        fileTitleField.addEventListener('change', function(){
+              // the file title has been changed.  do something.
+
+
+        });
+
+        adminGameCells.addEventListener('click', function(){
+            // a cell in the admin window's game representation was clicked.  
+            // display the cell's contents in the designated area on the admin window:
+
+            // each cell has a column and row attribute:
+            var gameID = gamesInFileDropDown.value; // <-- this needs to point to an actual game ID.  figure it out.
+            var roundID = roundsInGameDropDown.value; // <-- this needs to point to an actual round ID. figure it out.
+            var columnID = this.getAttribute(column); // <-- when loading the cells, the cell DOM will get this additional attribute
+            var rowID = this.getAttribute(row); // <-- when loading the cells, the cell DOM will get this additional attribute
+            
+
+            loadCellInformation(gameID, roundID, columnID, rowID);
+        });
+
+        adminQuestionField.addEventListener('change', function(){
+            // the field has been edited.  do something.
+        });
+
+        adminAnswerField.addEventListener('change', function(){
+            // the field has been edited.  do something.
+        });
+
+        adminSourceField.addEventListener('change', function(){
+            // the field has been edited.  do something.
+        });
+
+        adminValueField.addEventListener('change', function(){
+            // the field has been edited.  validate field (should only be numbers). Do something accordingly
+
+            // validate that the new field value is a number:
+
+            // if it is, do something accordingly:
+
+        });
+
+        adminSourceField.addEventListener('change', function(){
+          // the field has been edited.  do something.
+        });
+
+        adminCellResetButton.addEventListener('click', function(){
+          // user wants to reset the cell to unclicked condition. 
+        });
+
+        adminCellDisableButton.addEventListener('click', function(){
+          // user wants to disable the cell as if already clicked.
+        });
+
+
+
+
+
 
 
 function xmlLoadFile(){
@@ -334,102 +433,7 @@ function connectAdminWindow(){
 
       console.log("loading listeners...");
 
-      adminWindow.document.getElementById('debug').innerHTML = "creating all event listeners...";
-
-        var openFileOption = adminWindow.document.getElementById('fileLoader'); // <-- change to DOM element open button ID
-        var saveFileButton = adminWindow.document.getElementById('save-file-button'); // <-- change to DOM element save button ID
-        var newGameButton = adminWindow.document.getElementById('new-file-button'); // <-- change to DOM element new game button ID
-
-        var fileTitleField = adminWindow.document.getElementById('file-title'); // <-- change to DOM element file title field ID
-        var gamesInFileDropDown = adminWindow.document.getElementById('game-select-menu'); // <-- change to DOM element games in file dropdown ID
-        var roundsInGameDropDown = adminWindow.document.getElementById('round-select-menu'); // <-- change to DOM element rounds in game dropdown ID
-
-        var adminGameCells = this.document.getElementsByClassName('grid-cell'); // <-- change class name appropriately
-        var adminQuestionField = this.document.getElementById('question-field'); // <-- change to DOM object question field ID
-        var adminAnswerField = this.document.getElementById('answer-field'); // <-- change to DOM object answer field ID
-        var adminSourceField = this.document.getElementById('source-field'); // <-- change to DOM object source field ID
-        var adminValueField = this.document.getElementById('< value field id >'); // <-- change to DOM object value field ID
-        var adminCellResetButton = this.document.getElementById('cell-reset-button'); // <-- change to DOM object reset button ID
-        var adminCellDisableButton = this.document.getElementById('cell-disable-button'); // <-- change to DOM object disable button ID
-
-        // The admin window's elements are now defined.  Add event listeners to them:
-
-        this.document.getElementById('fileLoader').addEventListener('change', xmlLoadFile, false);	
-
-        openFileOption.addEventListener('change', function(){
-              // the open file button has been pressed.  
-              alert("attempting to open file");
-
-              xmlLoadFile();
-              // do we already have a file open?  Are there changes made to an open file that will be overwritten?  Inquire.
-        });
-
-        saveFileButton.addEventListener('click', function(){
-              // save the changes to xml and export to a file.
-
-              console.log("attempting to save file")
-              xmlSaveFile();
-
-        });
-
-        newGameButton.addEventListener('click', function(){
-              // this will abandon any changes made if a file is open.  Inquire.
-
-
-        });
-
-        fileTitleField.addEventListener('change', function(){
-              // the file title has been changed.  do something.
-
-
-        });
-
-        adminGameCells.addEventListener('click', function(){
-            // a cell in the admin window's game representation was clicked.  
-            // display the cell's contents in the designated area on the admin window:
-
-            // each cell has a column and row attribute:
-            var gameID = gamesInFileDropDown.value; // <-- this needs to point to an actual game ID.  figure it out.
-            var roundID = roundsInGameDropDown.value; // <-- this needs to point to an actual round ID. figure it out.
-            var columnID = this.getAttribute(column); // <-- when loading the cells, the cell DOM will get this additional attribute
-            var rowID = this.getAttribute(row); // <-- when loading the cells, the cell DOM will get this additional attribute
-            
-
-            loadCellInformation(gameID, roundID, columnID, rowID);
-        });
-
-        adminQuestionField.addEventListener('change', function(){
-            // the field has been edited.  do something.
-        });
-
-        adminAnswerField.addEventListener('change', function(){
-            // the field has been edited.  do something.
-        });
-
-        adminSourceField.addEventListener('change', function(){
-            // the field has been edited.  do something.
-        });
-
-        adminValueField.addEventListener('change', function(){
-            // the field has been edited.  validate field (should only be numbers). Do something accordingly
-
-            // validate that the new field value is a number:
-
-            // if it is, do something accordingly:
-
-        });
-
-        adminSourceField.addEventListener('change', function(){
-          // the field has been edited.  do something.
-        });
-
-        adminCellResetButton.addEventListener('click', function(){
-          // user wants to reset the cell to unclicked condition. 
-        });
-
-        adminCellDisableButton.addEventListener('click', function(){
-          // user wants to disable the cell as if already clicked.
-        });
+        
 
     }
 
