@@ -9,10 +9,12 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="js/jquery-ui/jquery-ui.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script type="text/javascript" src="js/FileSaver.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
         <script type="text/javascript" src="js/admin.js"></script>
     </head>
     <body onload="alert('finished')">
@@ -69,18 +71,28 @@
                     <div class="grid_item_title">Title 1</div>
                 </div>
                 -->
-                <span>
-                    <h3>File Title</h3>
-                    <input id='file-title' type='text', value='Title'/>
-                </span>
+                <div>
+                    <div>
+                        <h3>File Title</h3>
+                        <input id='file-title' type='text', value='Title'/>
+                    </div>
+                    <div>
+                        <h3>File Creator</h3>
+                        <input id='file-creator' type='text', value='Creator'/>
+                    </div>
+                    <h3>File Notes</h3>
+                    <input id='file-notes' type='text', value='Notes'/>
+                </div>
+                </div>
+
                 <span>
                     <h3>Games in file</h3>
-                    <select id='game-select-menu' name="cars" size="4" >
-                            <option value="game1">Game 1</option>
-                            <option value="game2">Game 2</option>
-                            <option value="game3">Game 3</option>
-                            <option value="game4">Game 4</option>
-                    </select>
+                    <ul id='game-select-menu'>
+                            <li class="ui-state-default">Game 1</li>
+                            <li class="ui-state-default">Game 2</li>
+                            <li class="ui-state-default">Game 3</li>
+                            <li class="ui-state-default">Game 4</li>
+                    </ul>
                 </span>
                 <span>
                         <h3>Rounds in game</h3>

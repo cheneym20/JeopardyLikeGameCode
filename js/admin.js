@@ -21,14 +21,16 @@ var gameWindow = window.opener;
         var newGameButton = document.getElementById('new-file-button'); // <-- change to DOM element new game button ID
 
         var fileTitleField = document.getElementById('file-title'); // <-- change to DOM element file title field ID
-        var gamesInFileDropDown = document.getElementById('game-select-menu'); // <-- change to DOM element games in file dropdown ID
+        var fileCreatorField = document.getElementById('file-creator'); // <-- change to DOM element file creator field ID
+        var fileNotesField = document.getElementById('file-notes');
+        var gamesInFileSortable = document.getElementById('game-select-menu'); // <-- change to DOM element games in file sortable ID
         var roundsInGameDropDown = document.getElementById('round-select-menu'); // <-- change to DOM element rounds in game dropdown ID
 
         var adminGameCells = document.getElementsByClassName('grid-cell'); // <-- change class name appropriately
         var adminQuestionField = document.getElementById('question-field'); // <-- change to DOM object question field ID
         var adminAnswerField = document.getElementById('answer-field'); // <-- change to DOM object answer field ID
         var adminSourceField = document.getElementById('source-field'); // <-- change to DOM object source field ID
-        var adminValueField = document.getElementById('< value field id >'); // <-- change to DOM object value field ID
+        var adminValueField = document.getElementById('cell-value-field'); // <-- change to DOM object value field ID
         var adminCellResetButton = document.getElementById('cell-reset-button'); // <-- change to DOM object reset button ID
         var adminCellDisableButton = document.getElementById('cell-disable-button'); // <-- change to DOM object disable button ID
 
@@ -62,19 +64,25 @@ var gameWindow = window.opener;
 
         });
 
+
+        fileCreatorField.addEventListener('change', function(){
+              // the file creator has been changed. do something.
+        });
+/*
         adminGameCells.addEventListener('click', function(){
             // a cell in the admin window's game representation was clicked.  
             // display the cell's contents in the designated area on the admin window:
 
             // each cell has a column and row attribute:
-            var gameID = gamesInFileDropDown.value; // <-- this needs to point to an actual game ID.  figure it out.
+          //  var gameID = gamesInFileSortable.value; // <-- this needs to point to an actual game ID.  figure it out.
             var roundID = roundsInGameDropDown.value; // <-- this needs to point to an actual round ID. figure it out.
             var columnID = this.getAttribute(column); // <-- when loading the cells, the cell DOM will get this additional attribute
             var rowID = this.getAttribute(row); // <-- when loading the cells, the cell DOM will get this additional attribute
             
-
             loadCellInformation(gameID, roundID, columnID, rowID);
+
         });
+*/
 
         adminQuestionField.addEventListener('change', function(){
             // the field has been edited.  do something.
@@ -110,7 +118,8 @@ var gameWindow = window.opener;
         });
 
 
-
+        $("#game-select-menu").sortable();
+        $("#game-select-menu").disableSelection();
 
 
 
@@ -221,11 +230,13 @@ function displayFileInformation(){
     // load the following into the administrator window:
 
           // File Title <-- place into the appropriate html element:
-          adminWindow.document.getElementById('file-title').value = xmlGameOb.getElementByTagName('title')[0].childNodes[0].nodeValue;
+          fileTitleField.value = xmlGameOb.getElementsByTagName('title')[0].childNodes[0].nodeValue;
 
           // File Creator <-- place into the appropriate html element:
+          fileCreatorField.value = xmlGameOb.getElementsByTagName('fileCreator')[0].childNodes[0].nodeValue;
 
           // File Notes <-- place into the appropriate html element:
+          fileNotesField.value = xmlGameOb.getElementsByTagName('fileNotes')[0].childNodes[0].nodeValue;
 
 }
 

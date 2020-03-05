@@ -6,7 +6,7 @@ var adminWindow;
 
 $('#openAdminButton').on('click', function(){
   
-    adminWindow = window.open('admin.html', "ADMIN WINDOW", "width=800px, height=600px, resizable");
+    adminWindow = window.open('admin.html', "ADMIN WINDOW", "width=1000px, height=600px, resizable");
   
 });
 
