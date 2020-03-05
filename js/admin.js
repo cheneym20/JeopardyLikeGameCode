@@ -1,15 +1,19 @@
 
 $(document).ready(function(){
 
-var gameState = "";
+var gameState = ""; // inGameMode, editMode
+        
+var gameFileState = ""; // complete, complete_changesMade, incomplete, incomplete_changesMade
 
-var overlayState = "";
+var overlayState = "";  // visible_question_value, visible_answer_source, hidden
 
 var xmlGameOb;
+        
+var emptyXMLgameOb;  // used when a new game file is created.  This is the framework.  It is a mostly empty game file
 
-var adminWindow;
+var adminWindow = window;  // points to the admin window (which this window is)
 
-var gameWindow = window.opener;
+var gameWindow = window.opener;  //
 
 
 // load all event listeners:
@@ -54,6 +58,9 @@ var gameWindow = window.opener;
 
         newGameButton.addEventListener('click', function(){
               // this will abandon any changes made if a file is open.  Inquire.
+              
+                // check for changes and warn if any changes will be lost:
+              //  if(
 
 
         });
@@ -389,7 +396,8 @@ function gameModeChange(newGameMode){
   
 }
 
-
+/*
+                
 function showAdminWindow(){
   // is there a way to determine whether or not a dual screen is available?
   // if so, warn user if not available.  else open the admin window
@@ -455,6 +463,7 @@ function connectAdminWindow(){
 
 }
 
+*/
 
 function loadCellInformation(gameID, roundID, columnID, rowID){
 
