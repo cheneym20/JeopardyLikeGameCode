@@ -245,6 +245,8 @@ function displayFileInformation(){
           // File Notes <-- place into the appropriate html element:
           fileNotesField.value = xmlGameOb.getElementsByTagName('fileNotes')[0].childNodes[0].nodeValue;
 
+
+
 }
 
 
@@ -254,7 +256,19 @@ function displayGameInformation(){
 
     // each game should have the following information:
 
+    // get a list of all the games:
+
+        var gameList = xmlGameOb.getElementsByTagName("game");
+
+        alert("gameList.length: " + gameList.length);
+
         // gameID <-- place into the appropriate html element:
+
+        alert("gameId: " + gameList.getElementsByTagName("gameId")[0].childNodes[0].nodeValue);
+
+        // game title:
+
+        alert("gameTitle: " + gameList.getElementsByTagName("gameTitle")[0].childNodes[0].nodeValue);
 
         // game creator <-- place into the appropriate html element:
 
@@ -263,6 +277,13 @@ function displayGameInformation(){
         // notes <-- place into the appropriate html element:
 
         // an array of rounds <-- place into the appropriate html dropdownlist element:
+
+
+}
+
+
+function addGameListElement(id, name){
+
 
 
 }
