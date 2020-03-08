@@ -15,6 +15,10 @@ var adminWindow = window;  // points to the admin window (which this window is)
 
 var gameWindow = window.opener;  //
 
+$("#game-select-menu").empty();
+
+$("#game-select-menu").append("<li>nothing</li>");
+
 
 // load all event listeners:
 
@@ -245,9 +249,34 @@ function displayFileInformation(){
           // File Notes <-- place into the appropriate html element:
           fileNotesField.value = xmlGameOb.getElementsByTagName('fileNotes')[0].childNodes[0].nodeValue;
 
+          populateGamesList();
 
 
 }
+
+
+function populateGamesList(){
+
+  // empty the games list:
+    $("#game-select-menu").empty();
+
+    var gameList = xmlGameOb.getElementsByTagName("game");
+
+    alert("gameList.length: " + gameList.childNodes.length);
+
+    for(gameItem in gameList.childNodes){
+      var gid = gameItem.getElementsByTagName("gameId")[0].childNodes[0].nodeValue;
+      var title = gameItem.getElementsByTagName("gameTitle")[0].childNodes[0].nodeValue;
+      var creator = gameItem.getElementsByTagName("gameCreator")[0].childNodes[0].nodeValue;
+      var dateCreated = gameItem.getElementsByTagName("gameDateCreated")[0].childNodes[0].nodeValue;
+      var notes = gameItem.getElementsByTagName("gameNotes")[0].childNodes[0].nodeValue;
+
+      addGameListElement(gid,title,creator,dateCreated,notes);
+    }
+
+
+}
+
 
 
 function displayGameInformation(){
@@ -256,19 +285,12 @@ function displayGameInformation(){
 
     // each game should have the following information:
 
+        // clear the game list:
+
+        
+
     // get a list of all the games:
 
-        var gameList = xmlGameOb.getElementsByTagName("game");
-
-        alert("gameList.length: " + gameList.length);
-
-        // gameID <-- place into the appropriate html element:
-
-        alert("gameId: " + gameList.getElementsByTagName("gameId")[0].childNodes[0].nodeValue);
-
-        // game title:
-
-        alert("gameTitle: " + gameList.getElementsByTagName("gameTitle")[0].childNodes[0].nodeValue);
 
         // game creator <-- place into the appropriate html element:
 
@@ -282,8 +304,22 @@ function displayGameInformation(){
 }
 
 
-function addGameListElement(id, name){
+function addGameListElement(gid,title,creator,dateCreated,notes){
 
+    // take the game elements in xml and create a list item:
+
+    var newLI = document.createElement("li");
+    
+    newLI.id = gid;
+  //  newLI.
+  //  newLI.setAttribute("title", title);
+    newLI.setAttribute("creator", creator);
+    newLI.setAttribute("dateCreated", dateCreated);
+    newLI.setAttribute("notes", notes);
+
+    newLI.innerHTML = title;
+
+    $("#game-select-menu").append(newLI);
 
 
 }

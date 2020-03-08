@@ -5,8 +5,8 @@
     <game>
         <gameId>0001</gameId>
 		<gameTitle>Example Game 1</gameTitle>
-        <creator>ET1 Cheney</creator>
-        <dateCreated>3/1/2020</dateCreated>
+        <gameCreator>ET1 Cheney</gameCreator>
+        <gameDateCreated>3/1/2020</gameDateCreated>
         <gameNotes>note 1 note 2 note 3</gameNotes>
         <round>
             <roundPosition>1</roundPosition>
@@ -14,8 +14,8 @@
             <roundStatus>incomplete</roundStatus>
             <hasFinalQA>true</hasFinalQA>
             <finalQA>
-                <fQuestion>What is 2 + 2?</fQuestion>
-                <fAnswer>4</fAnswer>
+                <fQuestion>What is 222 + 2?</fQuestion>
+                <fAnswer>224</fAnswer>
                 <fSource>no source</fSource>
             </finalQA>
             <category>
@@ -27,6 +27,7 @@
                     <answer>2</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>2</row>
@@ -34,6 +35,7 @@
                     <answer>4</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>3</row>
@@ -41,6 +43,7 @@
                     <answer>6</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>4</row>
@@ -48,6 +51,7 @@
                     <answer>8</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>5</row>
@@ -55,6 +59,7 @@
                     <answer>10</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
             </category>
             <category>
@@ -66,6 +71,7 @@
                     <answer>1</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>2</row>
@@ -73,6 +79,7 @@
                     <answer>false</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>3</row>
@@ -80,6 +87,7 @@
                     <answer>spit</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>4</row>
@@ -87,6 +95,7 @@
                     <answer>5</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>5</row>
@@ -94,6 +103,7 @@
                     <answer>2</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
             </category>
             <category>
@@ -105,6 +115,7 @@
                     <answer>Electro Motive Force</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>2</row>
@@ -112,6 +123,7 @@
                     <answer>watts</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>3</row>
@@ -119,6 +131,7 @@
                     <answer>When the transistor no longer provides amplification</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>4</row>
@@ -126,6 +139,7 @@
                     <answer>To provide a one-way path for current flow</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>5</row>
@@ -133,6 +147,7 @@
                     <answer>4</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
             </category>
             <category>
@@ -144,6 +159,7 @@
                     <answer>The thickness of roller fluff stuff</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>2</row>
@@ -151,6 +167,7 @@
                     <answer>Cyan, Magenta, Yellow, Black (Karbon)</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>3</row>
@@ -158,6 +175,7 @@
                     <answer>Lignon</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>4</row>
@@ -165,6 +183,7 @@
                     <answer>Absolutely not</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
                 <qa>
                     <row>5</row>
@@ -172,6 +191,7 @@
                     <answer>O</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
+                    <dd>false</dd>
                 </qa>
             </category>
         </round>
@@ -194,7 +214,7 @@
                     <answer>2</answer>
                     <source>brain</source>
                     <qaStatus>complete</qaStatus>
-                    <dd>false</dd>
+                    <dd>true</dd>
                 </qa>
                 <qa>
                     <row>2</row>
