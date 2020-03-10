@@ -103,13 +103,21 @@
                 </span>
                 <span>
                         <h3>Rounds in game</h3>
-                        <select id='round-select-menu' name="cars" size="4" >
-                                <option value="round1">Round 1</option>
-                                <option value="round2">Round 2</option>
-                                <option value="round3">Round 3</option>
-                                <option value="round4">Round 4</option>
-                        </select>
+                        <ul id='round-select-menu' name="cars" size="4" >
+                                <li>Round 1</li>
+                        </ul>
                     </span>
+                    <div id="round-info-div"><h3>Round Information:</h3>
+                        <div><h3>position:</h3><input type="text" id="round-pos" value=""/></div>
+                        <div><h3>Title:</h3><input type="text" id="round-title" value=""/></div>
+                        <div><h3>Status:</h3><input type="text" id="round-status" value=""/></div>
+                        <div><h3>Has final QA:</h3><input type="checkbox" id="round-has-final-QA"/></div>
+                        <div><h3>Final Question:</h3><input type="text" id="round-final-question" value="question"/></div>
+                        <div><h3>Final Answer:</h3><input type="text" id="round-final-answer" value="question"/></div>
+                        <div><h3>Final Source:</h3><input type="text" id="round-final-source" value="question"/></div>
+                        <div><h3>Final QA Status:</h3><input type="text" id="round-final-qa-status" value="question"/></div>
+
+                    </div>
             </div>
 
             <div class="main clearfix">

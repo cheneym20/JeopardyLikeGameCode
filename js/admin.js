@@ -7,9 +7,78 @@ var gameFileState = ""; // complete, complete_changesMade, incomplete, incomplet
 
 var overlayState = "";  // visible_question_value, visible_answer_source, hidden
 
-var xmlGameOb;
-        
-var emptyXMLgameOb;  // used when a new game file is created.  This is the framework.  It is a mostly empty game file
+var gameCounter = 100;
+var roundCounter = 1000;
+
+function FileOb(){
+  this.fileTitle = "fileTitle";
+  this.fileCreator = "fileCreator";
+  this.fileNotes = "fileNotes";
+  this.games = [];
+
+  this.addGame = function(){
+    this.games.push(new GameOb(gameCounter++, new GameInfoOb("New Game", "ET1 Cheney", "today", "no comment."),[]));
+  }
+}
+
+function GameOb(_id, _gameInfo, _rounds){
+  this.id = _id
+	this.gameInfo = new GameInfoOb();
+	this.rounds = _rounds;
+
+	this.addRound = function(){
+		this.rounds.push(new roundOb(roundCounter++, new roundInfoOb("aaa",2,["firstCat","secondCat"]),[]));
+	}
+}
+
+function GameInfoOb(_title, _creator, _dateCreated, _comments){
+  this.id = gameCounter++;
+  this.title = _title;
+	this.creator = _creator;
+	this.dateCreated = _dateCreated;
+	this.comments = _comments;
+}
+
+
+function roundOb(id,info,data){
+	this.roundID = id;
+	this.roundInfo = info;
+	this.roundData = data;
+
+	this.addRoundData = function(){
+		this.roundData.push(new QAob(true,0,0,100,"answer","question","source",false));
+	}
+}
+
+
+function roundInfoOb(_roundName,_numOfQuestionRows,_columnTitles){
+	this.roundName = _roundName;
+	this.numberOfQuestionRows = _numOfQuestionRows;
+	this.columnTitles = _columnTitles;
+	this.finalJeopardyIncluded = false;
+	this.finalJeopardy = new finalJ("Xanswer", "Xquestion", "Xsource");
+}
+
+
+function QAob(_selectable,_category,_pos,_value,_answer,_question,_source,_isDailyDouble){
+	this.selectable = _selectable;
+	this.category = _category;
+	this.pos = _pos;
+	this.value = _value;
+	this.answer = _answer;
+	this.question = _question;
+	this.source = _source;
+	this.isDailyDouble = _isDailyDouble;
+}
+
+
+function finalJ(_answer,_question,_source){
+	this.answer = _answer;
+	this.question = _question;
+	this.source = _source;
+}
+
+let fileOb = new FileOb("ET1","now","none.");
 
 var adminWindow = window;  // points to the admin window (which this window is)
 
@@ -41,6 +110,7 @@ $("#game-select-menu").append("<li>nothing</li>");
         var adminValueField = document.getElementById('cell-value-field'); // <-- change to DOM object value field ID
         var adminCellResetButton = document.getElementById('cell-reset-button'); // <-- change to DOM object reset button ID
         var adminCellDisableButton = document.getElementById('cell-disable-button'); // <-- change to DOM object disable button ID
+        var gameListItem = document.getElementsByClassName("gameListItem");
 
         // The admin window's elements are now defined.  Add event listeners to them:
 
@@ -48,7 +118,7 @@ $("#game-select-menu").append("<li>nothing</li>");
               // the open file button has been pressed.  
               alert("attempting to open file");
 
-              xmlLoadFile();
+              loadFile();
               // do we already have a file open?  Are there changes made to an open file that will be overwritten?  Inquire.
         });
 
@@ -56,7 +126,7 @@ $("#game-select-menu").append("<li>nothing</li>");
               // save the changes to xml and export to a file.
 
               console.log("attempting to save file")
-              xmlSaveFile();
+              saveFile();
 
         });
 
@@ -66,6 +136,17 @@ $("#game-select-menu").append("<li>nothing</li>");
                 // check for changes and warn if any changes will be lost:
               //  if(
 
+
+        });
+
+
+        gamesInFileSortable.addEventListener('click', function(){
+
+          // action to perform when user clicks on a game list item:
+
+          // show the information in the corresponding fields:
+
+      //    alert(this.getAttribute("gid"));
 
         });
 
@@ -135,10 +216,10 @@ $("#game-select-menu").append("<li>nothing</li>");
 
 
 
-function xmlLoadFile(){
+function loadFile(){
     // needs to be called by a button on the admin window:
 
-      alert("attempting to parse xml file...");
+      alert("attempting to parse json file...");
 
       var preview = document.getElementById('title'); // <-- change to element id where the file name is placed
         
@@ -151,23 +232,27 @@ function xmlLoadFile(){
       if (file.type.match(textFile)) {
         reader.onload = function (event) {
 
+          alert("parsing json file...");
+
           // once successfully loaded, purge the gameOb and all fields:
 
       //		gameOb = new GameOb();
 
         //  purgeAll(); // <-- this is used to purge the entire jeopardy game object
 
-        //  Object.assign(gameOb, JSON.parse(event.target.result)); <-- used to parse JSON files.  
+          Object.assign(fileOb, JSON.parse(event.target.result)); //<-- used to parse JSON files.  
 
 
 
-      //  parser = new DOMParser();
-      //  xmlGameOb = parser.parseFromString(event.target.result,"text/xml");
+    //    parser = new DOMParser();
+    //    gameOb = parser.parseFromString(event.target.result,"text/xml");
 
-        xmlGameOb = $.parseXML(event.target.result);
+// OLD XML STUFF.
 
-        if(validateGameObject(xmlGameOb)){
-          populateAdminWindowWithFile(xmlGameOb);
+    //    xmlGameOb = $.parseXML(event.target.result);
+
+        if(validateGameObject(fileOb)){
+          populateAdminWindowWithFile(fileOb);
         }
         else{
           alert("Invalid file.");
@@ -181,20 +266,20 @@ function xmlLoadFile(){
         }
       }
       else {
-        preview.innerHTML = "Invalid filetype";
+        document.getElementById('debug').innerHTML = "Invalid filetype";
       }
       reader.readAsText(file);
 
 }
 
 
-function xmlSaveFile(){
+function saveFile(){
 
         // create the xml string from the xml object:
 
     var xmlSerializer = new XMLSerializer();
 
-    var XMLstr = xmlSerializer.serializeToString(xmlGameOb);
+    var XMLstr = xmlSerializer.serializeToString(fileOb);
 
     saveAs(blob, "newGame.txt");
     
@@ -241,13 +326,13 @@ function displayFileInformation(){
     // load the following into the administrator window:
 
           // File Title <-- place into the appropriate html element:
-          fileTitleField.value = xmlGameOb.getElementsByTagName('title')[0].childNodes[0].nodeValue;
+          fileTitleField.value = fileOb.title;
 
           // File Creator <-- place into the appropriate html element:
-          fileCreatorField.value = xmlGameOb.getElementsByTagName('fileCreator')[0].childNodes[0].nodeValue;
+          fileCreatorField.value = fileOb.fileCreator;
 
           // File Notes <-- place into the appropriate html element:
-          fileNotesField.value = xmlGameOb.getElementsByTagName('fileNotes')[0].childNodes[0].nodeValue;
+          fileNotesField.value = fileOb.fileNotes;
 
           populateGamesList();
 
@@ -260,45 +345,20 @@ function populateGamesList(){
   // empty the games list:
     $("#game-select-menu").empty();
 
-    var gameList = xmlGameOb.getElementsByTagName("game");
+    // OLD XML:
+  //  var gameList = gameOb.getElementsByTagName("game");
 
-    alert("gameList.length: " + gameList.childNodes.length);
+//    alert("gameList.length: " + gameList.childNodes.length);
 
-    for(gameItem in gameList.childNodes){
-      var gid = gameItem.getElementsByTagName("gameId")[0].childNodes[0].nodeValue;
-      var title = gameItem.getElementsByTagName("gameTitle")[0].childNodes[0].nodeValue;
-      var creator = gameItem.getElementsByTagName("gameCreator")[0].childNodes[0].nodeValue;
-      var dateCreated = gameItem.getElementsByTagName("gameDateCreated")[0].childNodes[0].nodeValue;
-      var notes = gameItem.getElementsByTagName("gameNotes")[0].childNodes[0].nodeValue;
+    for(var i = 0; i<fileOb.games.length; i++){
+      var gid = fileOb.games[i].gameId;
+      var title = fileOb.games[i].gameTitle;
+      var creator = fileOb.games[i].gameCreator;
+      var dateCreated = fileOb.games[i].gameDateCreated;
+      var notes = fileOb.games[i].gameNotes;
 
       addGameListElement(gid,title,creator,dateCreated,notes);
     }
-
-
-}
-
-
-
-function displayGameInformation(){
-
-    // each file can have multiple games that last for multiple rounds.  When a user clicks on a game from the xml file, display info about it.
-
-    // each game should have the following information:
-
-        // clear the game list:
-
-        
-
-    // get a list of all the games:
-
-
-        // game creator <-- place into the appropriate html element:
-
-        // date created <-- place into the appropriate html element:
-
-        // notes <-- place into the appropriate html element:
-
-        // an array of rounds <-- place into the appropriate html dropdownlist element:
 
 
 }
@@ -308,19 +368,118 @@ function addGameListElement(gid,title,creator,dateCreated,notes){
 
     // take the game elements in xml and create a list item:
 
+    var liDiv = document.createElement("div");
+    liDiv.innerHTML = title;
+
     var newLI = document.createElement("li");
+    var editButton = document.createElement("button");
+    editButton.innerHTML = "edit";
+    editButton.onclick = function(){
+
+      loadGameInfoIntoFields(gid);
+    }
+
+    newLI.classList.add("gameListItem");
     
     newLI.id = gid;
-  //  newLI.
+    editButton.setAttribute("gid", gid);
   //  newLI.setAttribute("title", title);
     newLI.setAttribute("creator", creator);
     newLI.setAttribute("dateCreated", dateCreated);
     newLI.setAttribute("notes", notes);
 
-    newLI.innerHTML = title;
+    newLI.appendChild(liDiv);
+    newLI.appendChild(editButton);
 
     $("#game-select-menu").append(newLI);
 
+}
+
+
+function loadGameInfoIntoFields(gid){
+
+  // determine the gameOb from the gid (gameId):
+
+  var index = 0;
+
+  for(var i = 0; i<fileOb.games.length; i++){
+    if(fileOb.games[i].gameId == gid){
+      index = i;
+      break;
+    }
+  }
+
+  // load the game of index into the html fields:
+    document.getElementById("game-id").value = fileOb.games[index].gameId;
+    document.getElementById("game-title").value = fileOb.games[index].gameTitle;
+    document.getElementById("game-creator").value = fileOb.games[index].gameCreator;
+    document.getElementById("game-date-created").value = fileOb.games[index].gameDateCreated;
+    document.getElementById("game-notes").value = fileOb.games[index].gameNotes;
+
+    loadListOfRounds(index);
+    
+    
+}
+
+
+function loadListOfRounds(index){
+
+  // empty the rounds ul:
+
+  $("#round-select-menu").empty();
+
+  // populate the list with the rounds:
+
+  for(var i = 0; i<fileOb.games[index].round.length; i++){
+    // for every round, create an item:
+    createRoundListItem(index,i);
+  }
+
+}
+
+
+function createRoundListItem(index,i){
+
+  // create a li for the item:
+//  $("#round-select-menu").append("<li>test</li>");
+
+    var newLI = document.createElement("li");
+    var liDiv = document.createElement("div");
+
+    liDiv.innerHTML = fileOb.games[index].round[i].roundPosition;
+    liDiv.setAttribute("pos", fileOb.games[index].round[i].roundPosition);
+    liDiv.setAttribute("gameNum", index);
+
+    newLI.appendChild(liDiv);
+  // add the title to the li:
+    liDiv.innerHTML = fileOb.games[index].round[i].roundTitle;
+
+  // add interactivity:
+    liDiv.onclick = function(){
+      editRound(this.getAttribute("gameNum"), this.getAttribute("pos"));
+    }
+
+    $("#round-select-menu").append(newLI);
+
+}
+
+
+function editRound(gameNum,roundNum){
+
+    alert(gameNum + ", " + roundNum);
+
+    // load values:
+
+    var thisRound = fileOb.games[gameNum].round[roundNum-1];
+
+    document.getElementById("round-pos").value = thisRound.roundPosition;
+    document.getElementById("round-title").value = thisRound.roundTitle;
+    document.getElementById("round-status").value = thisRound.roundStatus;
+    document.getElementById("round-has-final-QA").value = thisRound.hasFinalQA;
+    document.getElementById("round-final-question").value = thisRound.finalQA.fQuestion;
+    document.getElementById("round-final-answer").value = thisRound.finalQA.fAnswer;
+    document.getElementById("round-final-source").value = thisRound.finalQA.fSource;
+    document.getElementById("round-final-qa-status").value = thisRound.finalQA.fStatus
 
 }
 

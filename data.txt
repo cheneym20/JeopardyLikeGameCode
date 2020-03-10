@@ -1,0 +1,452 @@
+{
+  "title": "Prototypal Games",
+  "fileCreator": "ET1 Cheney",
+  "fileNotes": "Notes notes notes.",
+  "games": [
+    {
+      "gameId": "0001",
+      "gameTitle": "Example Game 1",
+      "gameCreator": "ET1 Cheney",
+      "gameDateCreated": "3/1/2020",
+      "gameNotes": "note 1 note 2 note 3",
+      "round": [
+        {
+          "roundPosition": 1,
+          "roundTitle": "round 1",
+          "roundStatus": "incomplete",
+          "hasFinalQA": "true",
+          "finalQA": {
+            "fQuestion": "What is 222 + 2?",
+            "fAnswer": "224",
+            "fSource": "no source",
+            "fStatus": "incomplete"
+          },
+          "category": [
+            {
+              "column": "1",
+              "title": "Math works",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "What is 1 + 1?",
+                  "answer": "2",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "What is 2 + 2?",
+                  "answer": "4",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "What is 3 + 3?",
+                  "answer": "6",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "What is 4 + 4?",
+                  "answer": "8",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "What is 5 + 5?",
+                  "answer": "10",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            },
+            {
+              "column": "2",
+              "title": "Science",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "How many protons in hydrogen??",
+                  "answer": "1",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "True or False: water is hydrophobic?",
+                  "answer": "false",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "Another word for phlegm?",
+                  "answer": "spit",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "How many fingers on each hand?",
+                  "answer": "5",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "How many ears each human have?",
+                  "answer": "2",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            },
+            {
+              "column": "3",
+              "title": "Electronics",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "Define EMF?",
+                  "answer": "Electro Motive Force",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "In what unit of measure is power?",
+                  "answer": "watts",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "What is transistor saturation?",
+                  "answer": "When the transistor no longer provides amplification",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "What is the function of a diode?",
+                  "answer": "To provide a one-way path for current flow",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "How many diodes in a bridge rectifier?",
+                  "answer": "4",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            },
+            {
+              "column": "4",
+              "title": "Random",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "What is nap in the painting world?",
+                  "answer": "The thickness of roller fluff stuff",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "What is CMYK?",
+                  "answer": "Cyan, Magenta, Yellow, Black (Karbon)",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "What in paper makes it turn yellow?",
+                  "answer": "Lignon",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "Do honey badgers care about anything?",
+                  "answer": "Absolutely not",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "What type of blood type is universal?",
+                  "answer": "O",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "roundPosition": "2",
+          "roundTitle": "round 2",
+          "roundStatus": "incomplete",
+          "hasFinalQA": "true",
+          "finalQA": {
+            "fQuestion": "What is 24 + 24?",
+            "fAnswer": "48",
+            "fSource": "no source",
+            "fStatus": "incomplete"
+          },
+          "category": [
+            {
+              "column": "1",
+              "title": "Math works",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "What is 1 + 1?",
+                  "answer": "2",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "true",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "What is 2 + 2?",
+                  "answer": "4",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "What is 3 + 3?",
+                  "answer": "6",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "What is 4 + 4?",
+                  "answer": "8",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "What is 5 + 5?",
+                  "answer": "10",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            },
+            {
+              "column": "2",
+              "title": "Science",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "How many protons in hydrogen??",
+                  "answer": "1",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "True or False: water is hydrophobic?",
+                  "answer": "false",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "Another word for phlegm?",
+                  "answer": "spit",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "How many fingers on each hand?",
+                  "answer": "5",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "How many ears each human have?",
+                  "answer": "2",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            },
+            {
+              "column": "3",
+              "title": "Electronics",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "Define EMF?",
+                  "answer": "Electro Motive Force",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "In what unit of measure is power?",
+                  "answer": "watts",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "What is transistor saturation?",
+                  "answer": "When the transistor no longer provides amplification",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "What is the function of a diode?",
+                  "answer": "To provide a one-way path for current flow",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "How many diodes in a bridge rectifier?",
+                  "answer": "4",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            },
+            {
+              "column": "4",
+              "title": "Random",
+              "qa": [
+                {
+                  "row": "1",
+                  "question": "What is nap in the painting world?",
+                  "answer": "The thickness of roller fluff stuff",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 100
+                },
+                {
+                  "row": "2",
+                  "question": "What is CMYK?",
+                  "answer": "Cyan, Magenta, Yellow, Black (Karbon)",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 200
+                },
+                {
+                  "row": "3",
+                  "question": "What in paper makes it turn yellow?",
+                  "answer": "Lignon",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 300
+                },
+                {
+                  "row": "4",
+                  "question": "Do honey badgers care about anything?",
+                  "answer": "Absolutely not",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 400
+                },
+                {
+                  "row": "5",
+                  "question": "What type of blood type is universal?",
+                  "answer": "O",
+                  "source": "brain",
+                  "qaStatus": "complete",
+                  "dd": "false",
+                  "value": 500
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
