@@ -481,7 +481,103 @@ function editRound(gameNum,roundNum){
     document.getElementById("round-final-source").value = thisRound.finalQA.fSource;
     document.getElementById("round-final-qa-status").value = thisRound.finalQA.fStatus
 
+    let rows = 0;
+
+    // get the number of rows, max rows;
+    for(var i = 0; i<thisRound.category.length; i++){
+      // for each category, go through the qa values and get the highest row value:
+      for(var j = 0; j<thisRound.category[i].qa.length; j++){
+        // go through each qa object and see what the highest number is:
+          if(thisRound.category[i].qa[j].row > rows){
+            rows = thisRound.category[i].qa[j].row;
+          }
+      }
+    }
+
+    let cols = thisRound.category.length;
+
+    createJeopardyTable(gameNum,roundNum,rows,cols);
+
 }
+
+
+function createJeopardyTable(gameNum,roundNum,rows,cols){
+
+  //	alert("currQA.category: " + typeof currQA.category + ", currQA.pos: " + typeof currQA.pos);
+    // use the rows and columns to fill a div with a grid/table thing:
+  //  rowsNum = parseInt(rows);
+    var rowsNum = rows;
+
+    var roundOb = fileOb.games[gameNum].round[roundNum];
+    // clear the grid:
+  //  $("#gameGrid").empty();
+  
+    $("#gen_tab").empty();
+  
+    // prebuild the grid:
+    
+    let tableEl = document.getElementById("gen_tab");
+  
+    let tblBody = document.createElement('tbody');
+    tblBody.id = "1,2";
+    tableEl.appendChild(tblBody);
+  
+    for(var t = 0; t < rowsNum+1; t++){
+      // add a <tr> for each row, to include the title row:
+      let tblRow = document.createElement('tr');
+  
+      //for each row, add the appropriate amount of cells (equal to the number of columns):
+      for(var c = 0; c < cols; c++){
+
+        if(t == 0){
+          // it's a title row. Make <th>'s:
+          let th = document.createElement('th');
+
+          th.innerHTML = roundOb.category[c].title;
+        //  th.innerHTML = gameOb.rounds[currRound].roundInfo.columnTitles[c];
+          tblRow.appendChild(th);
+        }
+        else{
+          // regular cell, make <td>'s:
+          let td = document.createElement('td');
+          td.setAttribute("rowID", t-1);
+          td.setAttribute("colID", c);
+          td.setAttribute("gameID", gameNum);
+          td.setAttribute("roundNum", roundNum);
+      //    td.id = t+","+c;
+          td.innerHTML = roundOb.category[c].qa[t-1].value;
+          td.classList.add("qa_item");
+      //    let cellCall = td.id.split(",");
+          td.addEventListener("click", function(){editQA(td.getAttribute("rowID"),td.getAttribute("colID"), this);}, false);
+          tblRow.appendChild(td);
+        }
+      }
+  
+      tblBody.appendChild(tblRow);
+  
+    //	document.getElementById("#gameGrid").appendChild(tblBody);
+  
+    }
+  
+    document.getElementById("finalGrid").appendChild(tableEl);
+  
+    // now iterate through the roundData elements and place them into their proper places:
+  /*
+    for(var e = 0; e < thisRound.qa.length; e++){
+      // look at the category and position of each
+      let thisQA = gameOb.rounds[currRound].roundData[e];
+  
+      // the row is the .pos+1, the column is the category:
+      let cell = tblBody.children[thisQA.pos].children[thisQA.category];
+  
+      // add the cell value:
+      cell.innerHTML = thisQA.value;
+  
+  
+    }
+  
+    */
+  }
 
 
 function loadRoundOntoGrid(roundOb){
