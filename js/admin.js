@@ -21,6 +21,7 @@ function FileOb(){
   }
 }
 
+
 function GameOb(_id, _gameInfo, _rounds){
   this.id = _id
 	this.gameInfo = new GameInfoOb();
@@ -32,11 +33,11 @@ function GameOb(_id, _gameInfo, _rounds){
 }
 
 function GameInfoOb(_title, _creator, _dateCreated, _comments){
-  this.id = gameCounter++;
-  this.title = _title;
-	this.creator = _creator;
-	this.dateCreated = _dateCreated;
-	this.comments = _comments;
+  this.gameId = gameCounter++;
+  this.gameTitle = _title;
+	this.gameCreator = _creator;
+	this.gameDateCreated = _dateCreated;
+	this.gameComments = _comments;
 }
 
 
@@ -80,6 +81,13 @@ function finalJ(_answer,_question,_source){
 
 let fileOb = new FileOb("ET1","now","none.");
 
+let currGameId = -1;
+let currRoundId = -1;
+let currCategory = -1;
+let currQA = {};
+
+let fileLoaded = false;
+
 var adminWindow = window;  // points to the admin window (which this window is)
 
 var gameWindow = window.opener;  //
@@ -95,7 +103,8 @@ $("#game-select-menu").append("<li>nothing</li>");
 
         var openFileOption = document.getElementById('fileLoader'); // <-- change to DOM element open button ID
         var saveFileButton = document.getElementById('save-file-button'); // <-- change to DOM element save button ID
-        var newGameButton = document.getElementById('new-file-button'); // <-- change to DOM element new game button ID
+        var newFileButton = document.getElementById('new-file-button'); // <-- change to DOM element new game button ID
+        var addGameButton = document.getElementById("add-new-game");
 
         var fileTitleField = document.getElementById('file-title'); // <-- change to DOM element file title field ID
         var fileCreatorField = document.getElementById('file-creator'); // <-- change to DOM element file creator field ID
@@ -116,7 +125,7 @@ $("#game-select-menu").append("<li>nothing</li>");
 
         openFileOption.addEventListener('change', function(){
               // the open file button has been pressed.  
-              alert("attempting to open file");
+        //      alert("attempting to open file");
 
               loadFile();
               // do we already have a file open?  Are there changes made to an open file that will be overwritten?  Inquire.
@@ -130,7 +139,7 @@ $("#game-select-menu").append("<li>nothing</li>");
 
         });
 
-        newGameButton.addEventListener('click', function(){
+        newFileButton.addEventListener('click', function(){
               // this will abandon any changes made if a file is open.  Inquire.
               
                 // check for changes and warn if any changes will be lost:
@@ -139,16 +148,10 @@ $("#game-select-menu").append("<li>nothing</li>");
 
         });
 
-
-        gamesInFileSortable.addEventListener('click', function(){
-
-          // action to perform when user clicks on a game list item:
-
-          // show the information in the corresponding fields:
-
-      //    alert(this.getAttribute("gid"));
-
+        addGameButton.addEventListener('click', function(){
+          addNewGame();
         });
+
 
         fileTitleField.addEventListener('change', function(){
               // the file title has been changed.  do something.
@@ -214,6 +217,9 @@ $("#game-select-menu").append("<li>nothing</li>");
         $("#game-select-menu").disableSelection();
 
 
+        $("#round-select-menu").sortable();
+        $("#round-select-menu").disableSelection();
+
 
 
 function loadFile(){
@@ -232,7 +238,7 @@ function loadFile(){
       if (file.type.match(textFile)) {
         reader.onload = function (event) {
 
-          alert("parsing json file...");
+      //    alert("parsing json file...");
 
           // once successfully loaded, purge the gameOb and all fields:
 
@@ -253,6 +259,8 @@ function loadFile(){
 
         if(validateGameObject(fileOb)){
           populateAdminWindowWithFile(fileOb);
+          fileLoaded = true;
+          document.getElementById("add-new-game").disabled = false;
         }
         else{
           alert("Invalid file.");
@@ -292,7 +300,7 @@ function validateGameObject(gameObject){
   // ensure that the gameObject has everything required to begin a game.
   // the return value should reflect either that a game is possible
   // or returns what is needed.
-  alert("attempting to validate the game object...");
+//  alert("attempting to validate the game object...");
   // thinking about how to validate the file... maybe just validate a few objects that are created in a proper game file.
 
   // but for now...
@@ -305,7 +313,7 @@ function validateGameObject(gameObject){
 
 function populateAdminWindowWithFile(QAobject){
 
-    alert("attempting to populate the window...");
+  //  alert("attempting to populate the window...");
     // LOAD THE VARIOUS GAME ELEMENTS:
 
       // Load the File Information into html elements in the administrator window
@@ -322,17 +330,17 @@ function populateAdminWindowWithFile(QAobject){
 
 function displayFileInformation(){
 
-    alert("filling fields with available information...");
+//    alert("filling fields with available information...");
     // load the following into the administrator window:
 
           // File Title <-- place into the appropriate html element:
-          fileTitleField.value = fileOb.title;
+          fileTitleField.value = unescape(fileOb.title);
 
           // File Creator <-- place into the appropriate html element:
-          fileCreatorField.value = fileOb.fileCreator;
+          fileCreatorField.value = unescape(fileOb.fileCreator);
 
           // File Notes <-- place into the appropriate html element:
-          fileNotesField.value = fileOb.fileNotes;
+          fileNotesField.value = unescape(fileOb.fileNotes);
 
           populateGamesList();
 
@@ -351,11 +359,11 @@ function populateGamesList(){
 //    alert("gameList.length: " + gameList.childNodes.length);
 
     for(var i = 0; i<fileOb.games.length; i++){
-      var gid = fileOb.games[i].gameId;
-      var title = fileOb.games[i].gameTitle;
-      var creator = fileOb.games[i].gameCreator;
-      var dateCreated = fileOb.games[i].gameDateCreated;
-      var notes = fileOb.games[i].gameNotes;
+      var gid = fileOb.games[i].gameInfo.gameId;
+      var title = unescape(fileOb.games[i].gameInfo.gameTitle);
+      var creator = unescape(fileOb.games[i].gameInfo.gameCreator);
+      var dateCreated = unescape(fileOb.games[i].gameInfo.gameDateCreated);
+      var notes = unescape(fileOb.games[i].gameInfo.gameNotes);
 
       addGameListElement(gid,title,creator,dateCreated,notes);
     }
@@ -410,11 +418,11 @@ function loadGameInfoIntoFields(gid){
   }
 
   // load the game of index into the html fields:
-    document.getElementById("game-id").value = fileOb.games[index].gameId;
-    document.getElementById("game-title").value = fileOb.games[index].gameTitle;
-    document.getElementById("game-creator").value = fileOb.games[index].gameCreator;
-    document.getElementById("game-date-created").value = fileOb.games[index].gameDateCreated;
-    document.getElementById("game-notes").value = fileOb.games[index].gameNotes;
+    document.getElementById("game-id").value = fileOb.games[index].gameInfo.gameId;
+    document.getElementById("game-title").value = fileOb.games[index].gameInfo.gameTitle;
+    document.getElementById("game-creator").value = fileOb.games[index].gameInfo.gameCreator;
+    document.getElementById("game-date-created").value = fileOb.games[index].gameInfo.gameDateCreated;
+    document.getElementById("game-notes").value = fileOb.games[index].gameInfo.gameNotes;
 
     loadListOfRounds(index);
     
@@ -430,7 +438,7 @@ function loadListOfRounds(index){
 
   // populate the list with the rounds:
 
-  for(var i = 0; i<fileOb.games[index].round.length; i++){
+  for(var i = 0; i<fileOb.games[index].rounds.length; i++){
     // for every round, create an item:
     createRoundListItem(index,i);
   }
@@ -446,13 +454,13 @@ function createRoundListItem(index,i){
     var newLI = document.createElement("li");
     var liDiv = document.createElement("div");
 
-    liDiv.innerHTML = fileOb.games[index].round[i].roundPosition;
-    liDiv.setAttribute("pos", fileOb.games[index].round[i].roundPosition);
+    liDiv.innerHTML = fileOb.games[index].rounds[i].roundInfo.roundPosition;
+    liDiv.setAttribute("pos", fileOb.games[index].rounds[i].roundInfo.roundPosition);
     liDiv.setAttribute("gameNum", index);
 
     newLI.appendChild(liDiv);
   // add the title to the li:
-    liDiv.innerHTML = fileOb.games[index].round[i].roundTitle;
+    liDiv.innerHTML = fileOb.games[index].rounds[i].roundInfo.roundTitle;
 
   // add interactivity:
     liDiv.onclick = function(){
@@ -470,16 +478,16 @@ function editRound(gameNum,roundNum){
 
     // load values:
 
-    var thisRound = fileOb.games[gameNum].round[roundNum-1];
+    var thisRound = fileOb.games[gameNum].rounds[roundNum];
 
-    document.getElementById("round-pos").value = thisRound.roundPosition;
-    document.getElementById("round-title").value = thisRound.roundTitle;
-    document.getElementById("round-status").value = thisRound.roundStatus;
-    document.getElementById("round-has-final-QA").value = thisRound.hasFinalQA;
-    document.getElementById("round-final-question").value = thisRound.finalQA.fQuestion;
-    document.getElementById("round-final-answer").value = thisRound.finalQA.fAnswer;
-    document.getElementById("round-final-source").value = thisRound.finalQA.fSource;
-    document.getElementById("round-final-qa-status").value = thisRound.finalQA.fStatus
+    document.getElementById("round-pos").value = thisRound.roundInfo.roundPosition;
+    document.getElementById("round-title").value = thisRound.roundInfo.roundTitle;
+    document.getElementById("round-status").value = thisRound.roundInfo.roundStatus;
+    document.getElementById("round-has-final-QA").value = thisRound.roundInfo.hasFinalQA;
+    document.getElementById("round-final-question").value = thisRound.roundInfo.finalQA.fQuestion;
+    document.getElementById("round-final-answer").value = thisRound.roundInfo.finalQA.fAnswer;
+    document.getElementById("round-final-source").value = thisRound.roundInfo.finalQA.fSource;
+    document.getElementById("round-final-qa-status").value = thisRound.roundInfo.finalQA.fStatus
 
     let rows = 0;
 
@@ -508,7 +516,7 @@ function createJeopardyTable(gameNum,roundNum,rows,cols){
   //  rowsNum = parseInt(rows);
     var rowsNum = rows;
 
-    var roundOb = fileOb.games[gameNum].round[roundNum];
+    var roundOb = fileOb.games[gameNum].rounds[roundNum];
     // clear the grid:
   //  $("#gameGrid").empty();
   
@@ -533,14 +541,14 @@ function createJeopardyTable(gameNum,roundNum,rows,cols){
           // it's a title row. Make <th>'s:
           let th = document.createElement('th');
 
-          th.innerHTML = roundOb.category[c].title;
+          th.innerHTML = unescape(roundOb.category[c].title);
         //  th.innerHTML = gameOb.rounds[currRound].roundInfo.columnTitles[c];
           tblRow.appendChild(th);
         }
         else{
           // regular cell, make <td>'s:
           let td = document.createElement('td');
-          td.setAttribute("rowID", t-1);
+          td.setAttribute("rowID", t);
           td.setAttribute("colID", c);
           td.setAttribute("gameID", gameNum);
           td.setAttribute("roundNum", roundNum);
@@ -555,28 +563,10 @@ function createJeopardyTable(gameNum,roundNum,rows,cols){
   
       tblBody.appendChild(tblRow);
   
-    //	document.getElementById("#gameGrid").appendChild(tblBody);
-  
     }
   
     document.getElementById("finalGrid").appendChild(tableEl);
   
-    // now iterate through the roundData elements and place them into their proper places:
-  /*
-    for(var e = 0; e < thisRound.qa.length; e++){
-      // look at the category and position of each
-      let thisQA = gameOb.rounds[currRound].roundData[e];
-  
-      // the row is the .pos+1, the column is the category:
-      let cell = tblBody.children[thisQA.pos].children[thisQA.category];
-  
-      // add the cell value:
-      cell.innerHTML = thisQA.value;
-  
-  
-    }
-  
-    */
   }
 
 
@@ -800,20 +790,27 @@ function editQAobject(ob){
 }
 
 
-function importGameFile(){
-  // import the xml game file
-
-}
-
-
 function exportGameFile(gameObject){
   // export the xml game file
   
 }
 
 
-function createNewGame(){
+function addNewGame(){
   // create a new game (not yet xml)
+
+//  alert("adding new game...");
+
+  var newGame = fileOb.addGame();
+
+  //newGame.addRound();
+
+  //update the admin window:
+
+  populateGamesList();
+
+
+
   
 }
 
@@ -831,7 +828,7 @@ function setNumberOfRows(numOfRows){
 
 
 
-function resetGameGridObject(){
+function refreshGameGridObject(){
   // empty the game grid
 
 }
