@@ -1,10 +1,11 @@
 {
-  "title": "Prototypal Games",
+  "fileTitle": "Prototypal Games",
   "fileCreator": "ET1 Cheney",
   "fileNotes": "Notes notes notes.",
   "games": [
     { "gameInfo":{
           "gameId": "0001",
+          "gamePosition": 0,
           "gameTitle": "Example Game 1",
           "gameCreator": "ET1 Cheney",
           "gameDateCreated": "3/1/2020",
@@ -22,54 +23,59 @@
             "fSource": "no source",
             "fStatus": "incomplete"
           }},
-          "category": [
+          "categories": [
             {
               "column": 0,
               "title": "Math works",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
                   "row": 0,
                   "question": "What is 1 + 1?",
                   "answer": "2",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "What is 2 + 2?",
                   "answer": "4",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "What is 3 + 3?",
                   "answer": "6",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "What is 4 + 4?",
                   "answer": "8",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "What is 5 + 5?",
                   "answer": "10",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]
@@ -77,50 +83,55 @@
             {
               "column": 1,
               "title": "Science",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
                   "row": 0,
                   "question": "How many protons in hydrogen??",
                   "answer": "1",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "True or False: water is hydrophobic?",
                   "answer": "false",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": "false",
+                  "isDailyDouble": "false",
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "Another word for phlegm?",
                   "answer": "spit",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "How many fingers on each hand?",
                   "answer": "5",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "How many ears each human have?",
                   "answer": "2",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]
@@ -128,50 +139,55 @@
             {
               "column": 2,
               "title": "Electronics",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
                   "row": 0,
                   "question": "Define EMF?",
                   "answer": "Electro Motive Force",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "In what unit of measure is power?",
                   "answer": "watts",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "What is transistor saturation?",
                   "answer": "When the transistor no longer provides amplification",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "What is the function of a diode?",
                   "answer": "To provide a one-way path for current flow",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "How many diodes in a bridge rectifier?",
                   "answer": "4",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]
@@ -179,50 +195,55 @@
             {
               "column": 3,
               "title": "Random",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
                   "row": 0,
                   "question": "What is nap in the painting world?",
                   "answer": "The thickness of roller fluff stuff",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "What is CMYK?",
                   "answer": "Cyan, Magenta, Yellow, Black (Karbon)",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "What in paper makes it turn yellow?",
                   "answer": "Lignon",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "Do honey badgers care about anything?",
                   "answer": "Absolutely not",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "What type of blood type is universal?",
                   "answer": "O",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]
@@ -240,54 +261,60 @@
             "fSource": "no source",
             "fStatus": "incomplete"
           }},
-          "category": [
+          "categories": [
             {
               "column": 0,
               "title": "Math works",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
+                  "selectable":true,
                   "row": 0,
                   "question": "What is 1 + 1?",
                   "answer": "2",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": true,
+                  "isDailyDouble": true,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "What is 2 + 2?",
                   "answer": "4",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "What is 3 + 3?",
                   "answer": "6",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "What is 4 + 4?",
                   "answer": "8",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "What is 5 + 5?",
                   "answer": "10",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]
@@ -295,50 +322,55 @@
             {
               "column": 1,
               "title": "Science",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
                   "row": 0,
                   "question": "How many protons in hydrogen??",
                   "answer": "1",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "True or False: water is hydrophobic?",
                   "answer": "false",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "Another word for phlegm?",
                   "answer": "spit",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "How many fingers on each hand?",
                   "answer": "5",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "How many ears each human have?",
                   "answer": "2",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]
@@ -346,50 +378,55 @@
             {
               "column": 2,
               "title": "Electronics",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
                   "row": 0,
                   "question": "Define EMF?",
                   "answer": "Electro Motive Force",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "In what unit of measure is power?",
                   "answer": "watts",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "What is transistor saturation?",
                   "answer": "When the transistor no longer provides amplification",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "What is the function of a diode?",
                   "answer": "To provide a one-way path for current flow",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "How many diodes in a bridge rectifier?",
                   "answer": "4",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]
@@ -397,50 +434,55 @@
             {
               "column": 3,
               "title": "Random",
-              "qa": [
+              "qaArray": [
                 {
+                  "selectable":true,
                   "row": 0,
                   "question": "What is nap in the painting world?",
                   "answer": "The thickness of roller fluff stuff",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 100
                 },
                 {
+                  "selectable":true,
                   "row": 1,
                   "question": "What is CMYK?",
                   "answer": "Cyan, Magenta, Yellow, Black (Karbon)",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 200
                 },
                 {
+                  "selectable":true,
                   "row": 2,
                   "question": "What in paper makes it turn yellow?",
                   "answer": "Lignon",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 300
                 },
                 {
+                  "selectable":true,
                   "row": 3,
                   "question": "Do honey badgers care about anything?",
                   "answer": "Absolutely not",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 400
                 },
                 {
+                  "selectable":true,
                   "row": 4,
                   "question": "What type of blood type is universal?",
                   "answer": "O",
                   "source": "brain",
                   "qaStatus": "complete",
-                  "dd": false,
+                  "isDailyDouble": false,
                   "value": 500
                 }
               ]

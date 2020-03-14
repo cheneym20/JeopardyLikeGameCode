@@ -10,66 +10,87 @@ var overlayState = "";  // visible_question_value, visible_answer_source, hidden
 var gameCounter = 100;
 var roundCounter = 1000;
 
-function FileOb(){
-  this.fileTitle = "fileTitle";
-  this.fileCreator = "fileCreator";
-  this.fileNotes = "fileNotes";
+function FileOb(_fileTitle, _fileCreator, _fileNotes){
+  this.fileTitle = _fileTitle;
+  this.fileCreator = _fileCreator;
+  this.fileNotes = _fileNotes;
   this.games = [];
 
   this.addGame = function(){
-    this.games.push(new GameOb(gameCounter++, new GameInfoOb("New Game", "ET1 Cheney", "today", "no comment."),[]));
+  //  this.games.push(new GameOb(new GameInfoOb(this.games.length, "sample title", "sample creator", "sample date", "sample notes"), [].push(new RoundOb(roundCounter++, new RoundInfoOb(0,"Round Title"), new Categories(0,"sample title")))));
+  
+    this.games.push(new GameOb(new GameInfoOb(this.games.length, "sample title", "sample creator", "sample date", "sample notes")));
+
+
+    //    var newRound = newGame.addRound();
+//    newRound.roundInfo = new RoundInfoOb(0,"sample round title");
+//    var newCategory = newRound.addCategory();
+//    newCategory.title = "sample category title";
+//    newCategory.column = 0;
+//    newCategory.qaArray = [];
+  
+  
   }
 }
 
 
-function GameOb(_id, _gameInfo, _rounds){
-  this.id = _id
-	this.gameInfo = new GameInfoOb();
-	this.rounds = _rounds;
+function GameOb(_gameInfo){
+	this.gameInfo = _gameInfo;
+	this.rounds = [];
 
 	this.addRound = function(){
-		this.rounds.push(new roundOb(roundCounter++, new roundInfoOb("aaa",2,["firstCat","secondCat"]),[]));
+		this.rounds.push(new RoundOb(roundCounter++, new RoundInfoOb(this.rounds.length-1,"sample title")));
 	}
 }
 
-function GameInfoOb(_title, _creator, _dateCreated, _comments){
+function GameInfoOb(_gamePosition,_title, _creator, _dateCreated, _gameNotes){
   this.gameId = gameCounter++;
+  this.gamePosition = _gamePosition;
   this.gameTitle = _title;
 	this.gameCreator = _creator;
 	this.gameDateCreated = _dateCreated;
-	this.gameComments = _comments;
+	this.gameNotes = _gameNotes;
 }
 
 
-function roundOb(id,info,data){
+function RoundOb(id,info){
 	this.roundID = id;
 	this.roundInfo = info;
-	this.roundData = data;
+	this.categories = [];
 
-	this.addRoundData = function(){
-		this.roundData.push(new QAob(true,0,0,100,"answer","question","source",false));
+	this.addCategory = function(){
+		this.categories.push(new Categories(categories.length,"sample title"));
 	}
 }
 
 
-function roundInfoOb(_roundName,_numOfQuestionRows,_columnTitles){
-	this.roundName = _roundName;
-	this.numberOfQuestionRows = _numOfQuestionRows;
-	this.columnTitles = _columnTitles;
-	this.finalJeopardyIncluded = false;
+function RoundInfoOb(_roundPosition,_roundTitle){
+  this.roundPosition = _roundPosition;
+  this.roundTitle = _roundTitle;
+  this.roundStatus = "incomplete";
+	this.hasFinalQA = false;
 	this.finalJeopardy = new finalJ("Xanswer", "Xquestion", "Xsource");
 }
 
 
-function QAob(_selectable,_category,_pos,_value,_answer,_question,_source,_isDailyDouble){
+function Categories(_column,_title){
+  this.column = _column;
+  this.title = _title;
+  this.qaArray = [];
+
+  this.addQA = function(){
+    this.qaArray.push(new QAob(true,qaArray.length+1,"sample question", "sample answer", "sample source", false, 100));
+  }
+}
+
+function QAob(_selectable,_row,_question,_answer,_source,_isDailyDouble,_value){
 	this.selectable = _selectable;
-	this.category = _category;
-	this.pos = _pos;
-	this.value = _value;
-	this.answer = _answer;
+	this.row = _row;
 	this.question = _question;
+	this.answer = _answer;
 	this.source = _source;
 	this.isDailyDouble = _isDailyDouble;
+	this.value = _value;
 }
 
 
@@ -93,8 +114,6 @@ var adminWindow = window;  // points to the admin window (which this window is)
 var gameWindow = window.opener;  //
 
 $("#game-select-menu").empty();
-
-$("#game-select-menu").append("<li>nothing</li>");
 
 
 // load all event listeners:
@@ -139,14 +158,15 @@ $("#game-select-menu").append("<li>nothing</li>");
 
         });
 
-        newFileButton.addEventListener('click', function(){
-              // this will abandon any changes made if a file is open.  Inquire.
-              
-                // check for changes and warn if any changes will be lost:
-              //  if(
+
+        $("#new-file-button").on("click", function(){
+
+          console.log("new file button clicked.");
+          addNewFile();
 
 
         });
+
 
         addGameButton.addEventListener('click', function(){
           addNewGame();
@@ -225,7 +245,7 @@ $("#game-select-menu").append("<li>nothing</li>");
 function loadFile(){
     // needs to be called by a button on the admin window:
 
-      alert("attempting to parse json file...");
+    //  alert("attempting to parse json file...");
 
       var preview = document.getElementById('title'); // <-- change to element id where the file name is placed
         
@@ -376,46 +396,73 @@ function addGameListElement(gid,title,creator,dateCreated,notes){
 
     // take the game elements in xml and create a list item:
 
-    var liDiv = document.createElement("div");
-    liDiv.innerHTML = title;
+    var liSpan = document.createElement("span");
+    liSpan.innerHTML = title;
+
 
     var newLI = document.createElement("li");
     var editButton = document.createElement("button");
     editButton.innerHTML = "edit";
     editButton.onclick = function(){
-
       loadGameInfoIntoFields(gid);
     }
 
-    newLI.classList.add("gameListItem");
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "delete";
+    deleteButton.onclick = function(){
+      if(confirm("Are you sure you want to delete this game and all associated data?")){
+        deleteGame(gid);
+      }
+    }
+
+    newLI.classList.add("ui-state-default");
     
     newLI.id = gid;
     editButton.setAttribute("gid", gid);
+    deleteButton.setAttribute("gid", gid);
   //  newLI.setAttribute("title", title);
     newLI.setAttribute("creator", creator);
     newLI.setAttribute("dateCreated", dateCreated);
     newLI.setAttribute("notes", notes);
 
-    newLI.appendChild(liDiv);
+    newLI.appendChild(liSpan);
     newLI.appendChild(editButton);
+    newLI.appendChild(deleteButton);
 
     $("#game-select-menu").append(newLI);
 
 }
 
 
-function loadGameInfoIntoFields(gid){
+function deleteGame(gid){
+  // delete the game associated with the gid:
 
-  // determine the gameOb from the gid (gameId):
+}
 
+
+function gameObIndexFromGID(gid){
+  // determine the gameOb index number in the games array from the gid (gameId):
   var index = 0;
 
   for(var i = 0; i<fileOb.games.length; i++){
     if(fileOb.games[i].gameId == gid){
       index = i;
-      break;
+      return index;
     }
   }
+  return index;
+
+}
+
+
+function loadGameInfoIntoFields(gid){
+
+  currGameId = gid;
+
+  clearGameInfoFields();
+
+
+    var index = gameObIndexFromGID(gid);
 
   // load the game of index into the html fields:
     document.getElementById("game-id").value = fileOb.games[index].gameInfo.gameId;
@@ -430,11 +477,50 @@ function loadGameInfoIntoFields(gid){
 }
 
 
+function clearGameInfoFields(){
+// clear all game info fields:
+    document.getElementById("game-id").value = "";
+    document.getElementById("game-title").value = "";
+    document.getElementById("game-creator").value = "";
+    document.getElementById("game-date-created").value = "";
+    document.getElementById("game-notes").value = "";
+
+}
+
+
+function clearRoundInfoFields(){
+  // clear all round info fields:
+    document.getElementById("round-pos").value = "";
+    document.getElementById("round-title").value = "";
+    document.getElementById("round-status").value = "";
+    document.getElementById("round-has-final-QA").value = "";
+    document.getElementById("round-final-question").value = "";
+    document.getElementById("round-final-answer").value = "";
+    document.getElementById("round-final-source").value = "";
+    document.getElementById("round-final-qa-status").value = "";
+
+}
+
+
+function clearQAfields(){
+  // clear all QA fields:
+  document.getElementById("question-field").value = "";
+  document.getElementById("answer-field").value = "";
+  document.getElementById("source-field").value = "";
+  document.getElementById("cell-value-field").value = "";
+
+}
+
+
 function loadListOfRounds(index){
 
   // empty the rounds ul:
 
   $("#round-select-menu").empty();
+
+  // empty the round info fields:
+  clearRoundInfoFields();
+  clearQAfields();
 
   // populate the list with the rounds:
 
@@ -492,17 +578,17 @@ function editRound(gameNum,roundNum){
     let rows = 0;
 
     // get the number of rows, max rows;
-    for(var i = 0; i<thisRound.category.length; i++){
+    for(var i = 0; i<thisRound.categories.length; i++){
       // for each category, go through the qa values and get the highest row value:
-      for(var j = 0; j<thisRound.category[i].qa.length; j++){
+      for(var j = 0; j<thisRound.categories[i].qaArray.length; j++){
         // go through each qa object and see what the highest number is:
-          if(thisRound.category[i].qa[j].row > rows){
-            rows = thisRound.category[i].qa[j].row;
+          if(thisRound.categories[i].qaArray[j].row > rows){
+            rows = thisRound.categories[i].qaArray[j].row;
           }
       }
     }
 
-    let cols = thisRound.category.length;
+    let cols = thisRound.categories.length;
 
     createJeopardyTable(gameNum,roundNum,rows,cols);
 
@@ -541,7 +627,7 @@ function createJeopardyTable(gameNum,roundNum,rows,cols){
           // it's a title row. Make <th>'s:
           let th = document.createElement('th');
 
-          th.innerHTML = unescape(roundOb.category[c].title);
+          th.innerHTML = unescape(roundOb.categories[c].title);
         //  th.innerHTML = gameOb.rounds[currRound].roundInfo.columnTitles[c];
           tblRow.appendChild(th);
         }
@@ -553,7 +639,7 @@ function createJeopardyTable(gameNum,roundNum,rows,cols){
           td.setAttribute("gameID", gameNum);
           td.setAttribute("roundNum", roundNum);
       //    td.id = t+","+c;
-          td.innerHTML = roundOb.category[c].qa[t-1].value;
+          td.innerHTML = roundOb.categories[c].qaArray[t-1].value;
           td.classList.add("qa_item");
       //    let cellCall = td.id.split(",");
           td.addEventListener("click", function(){editQA(td.getAttribute("rowID"),td.getAttribute("colID"), this);}, false);
@@ -801,17 +887,26 @@ function addNewGame(){
 
 //  alert("adding new game...");
 
-  var newGame = fileOb.addGame();
+  fileOb.addGame();
+  fileOb.games[fileOb.games.length-1].addRound();
+  //fileOb.games[fileOb.games.length-1].roundInfoOb()
 
-  //newGame.addRound();
+  // clear all fields:
 
   //update the admin window:
 
   populateGamesList();
 
-
-
   
+}
+
+
+function addNewFile(){
+  // warn user about losing info:
+  if(confirm("You are about to create a new file.\nAny game changes or edits will be deleted.  Are you sure you want to contine?")){
+    //erase the current fileOb:
+    fileOb = new FileOb("ET1","now","none.");
+  }
 }
 
 
