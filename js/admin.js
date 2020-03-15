@@ -10,6 +10,9 @@ var overlayState = "";  // visible_question_value, visible_answer_source, hidden
 var gameCounter = 100;
 var roundCounter = 1000;
 
+document.getElementById("game-id").disabled = true;
+
+
 function FileOb(_fileTitle, _fileCreator, _fileNotes){
   this.fileTitle = _fileTitle;
   this.fileCreator = _fileCreator;
@@ -39,7 +42,7 @@ function GameOb(_gameInfo){
 	this.rounds = [];
 
 	this.addRound = function(){
-		this.rounds.push(new RoundOb(roundCounter++, new RoundInfoOb(this.rounds.length-1,"sample title")));
+		this.rounds.push(new RoundOb(roundCounter++, new RoundInfoOb(this.rounds.length,"sample round title")));
 	}
 }
 
@@ -59,7 +62,7 @@ function RoundOb(id,info){
 	this.categories = [];
 
 	this.addCategory = function(){
-		this.categories.push(new Categories(categories.length,"sample title"));
+		this.categories.push(new Categories(categories.length,"sample category title"));
 	}
 }
 
@@ -69,7 +72,7 @@ function RoundInfoOb(_roundPosition,_roundTitle){
   this.roundTitle = _roundTitle;
   this.roundStatus = "incomplete";
 	this.hasFinalQA = false;
-	this.finalJeopardy = new finalJ("Xanswer", "Xquestion", "Xsource");
+	this.finalQA = new finalJ("Xanswer", "Xquestion", "Xsource");
 }
 
 
@@ -95,9 +98,10 @@ function QAob(_selectable,_row,_question,_answer,_source,_isDailyDouble,_value){
 
 
 function finalJ(_answer,_question,_source){
-	this.answer = _answer;
-	this.question = _question;
-	this.source = _source;
+	this.fAnswer = _answer;
+	this.fQuestion = _question;
+  this.fSource = _source;
+  this.fStatus = "incomplete";
 }
 
 let fileOb = new FileOb("ET1","now","none.");
@@ -445,7 +449,7 @@ function gameObIndexFromGID(gid){
   var index = 0;
 
   for(var i = 0; i<fileOb.games.length; i++){
-    if(fileOb.games[i].gameId == gid){
+    if(fileOb.games[i].gameInfo.gameId == gid){
       index = i;
       return index;
     }
@@ -515,6 +519,7 @@ function clearQAfields(){
 function loadListOfRounds(index){
 
   // empty the rounds ul:
+  console.log("index: " + index);
 
   $("#round-select-menu").empty();
 
@@ -536,6 +541,8 @@ function createRoundListItem(index,i){
 
   // create a li for the item:
 //  $("#round-select-menu").append("<li>test</li>");
+
+    console.log("index: " + index + ", i: " + i);
 
     var newLI = document.createElement("li");
     var liDiv = document.createElement("div");
@@ -560,7 +567,7 @@ function createRoundListItem(index,i){
 
 function editRound(gameNum,roundNum){
 
-    alert(gameNum + ", " + roundNum);
+    console.log(gameNum + ", " + roundNum);
 
     // load values:
 
@@ -609,6 +616,8 @@ function createJeopardyTable(gameNum,roundNum,rows,cols){
     $("#gen_tab").empty();
   
     // prebuild the grid:
+
+    let headerComplete = false;
     
     let tableEl = document.getElementById("gen_tab");
   
@@ -616,7 +625,7 @@ function createJeopardyTable(gameNum,roundNum,rows,cols){
     tblBody.id = "1,2";
     tableEl.appendChild(tblBody);
   
-    for(var t = 0; t < rowsNum+1; t++){
+    for(var t = 0; t < rowsNum+2; t++){
       // add a <tr> for each row, to include the title row:
       let tblRow = document.createElement('tr');
   

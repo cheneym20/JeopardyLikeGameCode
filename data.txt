@@ -4,7 +4,7 @@
   "fileNotes": "Notes notes notes.",
   "games": [
     { "gameInfo":{
-          "gameId": "0001",
+          "gameId": 10000,
           "gamePosition": 0,
           "gameTitle": "Example Game 1",
           "gameCreator": "ET1 Cheney",
